@@ -1,18 +1,18 @@
 {
   "name": "MSWebApp",
   "version": "0.1.0",
-  "summary": "A short description of MSWebApp.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/MSWebApp",
+  "summary": "A Local cached webView.",
+  "description": "Local Cached webView, eazy config, cached the website to your iPhone local folder, for fast visit.\nTry it.",
+  "homepage": "https://github.com/WildDylan/MSWebApp",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "Dylan": "3664132@163.com"
+    "Dylan": "dylan@china.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/MSWebApp.git",
+    "git": "https://github.com/WildDylan/MSWebApp.git",
     "tag": "0.1.0"
   },
   "platforms": {
