@@ -1,11 +1,9 @@
-use_frameworks!
+#use_frameworks!
 
 target 'MSWebApp_Example' do
   pod 'MSWebApp', :path => '../'
 
   target 'MSWebApp_Tests' do
     inherit! :search_paths
-
-    
   end
 end

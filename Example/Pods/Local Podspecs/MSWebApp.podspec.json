@@ -1,0 +1,41 @@
+{
+  "name": "MSWebApp",
+  "version": "0.1.0",
+  "summary": "A short description of MSWebApp.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/MSWebApp",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Dylan": "3664132@163.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/MSWebApp.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source_files": "MSWebApp/Classes/**/*",
+  "public_header_files": "MSWebApp/Classes/**/*.h",
+  "frameworks": [
+    "UIKit",
+    "Foundation"
+  ],
+  "dependencies": {
+    "AFNetworking": [
+
+    ],
+    "WebViewJavascriptBridge": [
+
+    ],
+    "LKDBHelper": [
+
+    ],
+    "WPZipArchive": [
+
+    ]
+  }
+}

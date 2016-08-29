@@ -5,11 +5,102 @@
 [![License](https://img.shields.io/cocoapods/l/MSWebApp.svg?style=flat)](http://cocoapods.org/pods/MSWebApp)
 [![Platform](https://img.shields.io/cocoapods/p/MSWebApp.svg?style=flat)](http://cocoapods.org/pods/MSWebApp)
 
+## How to use
+
+Config the WebApp for use:
+
+step1. `#import <MSWebApp/MSWebApp.h>`
+step2: 
+
+Set the full url for where can get a config json. webApp will fetch modules in this config.
+
+Request like:
+
+`curl [MSWebApp webApp].fullURL -F app=(type) -F version=(local app version)`
+
+`local app version` will auto send.
+`type` means app type. keep reading.
+
+```objc
+[MSWebApp webApp].fullURL = @"http://192.168.199.173:8080/webapp.json";
+```
+
+Start WebApp, the type will be transported in `fullURL` with `POST` method, sometimes, you need this param.
+
+```objc
+[MSWebApp startWithType:@"MEC"];
+```
+
+Config request result must like this: !!!
+
+```json
+{
+    app =     {
+        module =         (
+                            {
+                                mid = LeafModules;
+                                packageurl = "http://um.devdylan.cn/LeafModules.zip";
+                                urls =                 {
+                                    "classPayment.tpl" = "classPayment.html";
+                                    "detail.tpl" = "detail/detail.html";
+                                    "enter.tpl" = "index.html";
+                                };
+                                version = ib42;
+                            },
+                            {
+                                mid = bootstrap;
+                                packageurl = "http://um.devdylan.cn/bootstrap.zip";
+                                urls =                 {
+                                };
+                                version = ib43;
+                            },
+                            {
+                                mid = vueModule;
+                                packageurl = "http://um.devdylan.cn/vueModule.zip";
+                                urls =                 {
+                                    "enter.tpl" = "index.html";
+                                };
+                                version = "3.4.6";
+                            }
+                        );
+        version = "3.3.4";
+    };
+}
+```
+
+You can observe the module processed. obs `MSWebModuleFetchOk` String.
+
+```objc
+[[NSNotificationCenter defaultCenter]
+    addObserver:_tableView
+    selector:@selector(reloadData)
+    name:@"MSWebModuleFetchOk"
+    object:nil];
+```
+
+step3. Open webView, Use the `instanceWithTplURL` medthod in `MSWebApp`, with URL, you can get an instance of `MSWebViewController`.
+
+```objc
+if ( usePresentWebApp ) {
+    UIViewController * viewController = [MSWebApp instanceWithTplURL:_urlField.text];
+    [self.navigationController presentViewController:viewController animated:YES completion:nil];
+} else {
+    UIViewController * viewController = [MSWebApp instanceWithTplURL:_urlField.text];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+```
+
+`MSWebViewController` have an bridge, you can subClass of it and registe it for use.
+
+SubClass:
+
+```objc
+[MSWebApp webApp].registedClass = [SubClass class];
+```
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
 
 ## Installation
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35A48D3B056D6D73BF9CB135 /* libPods-MSWebApp_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F88F161675728B5BF9128DAC /* libPods-MSWebApp_Tests.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -20,9 +21,10 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		7AC99587EC4707F222F52282 /* Pods_MSWebApp_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9007B7FCAE9AF2198B51AD9 /* Pods_MSWebApp_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		CAD296CA80B0D624AD5E69AE /* Pods_MSWebApp_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEB6EA6F6E53490030F5038F /* Pods_MSWebApp_Example.framework */; };
+		E6AF94E49A04CCA97A2D4E8C /* libPods-MSWebApp_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D79016696FFAFB3BD704B29 /* libPods-MSWebApp_Example.a */; };
+		FC7728431D6FD06200885BA3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC7728421D6FD06200885BA3 /* Launch Screen.storyboard */; };
+		FC7728561D7037EB00885BA3 /* MMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7728551D7037EB00885BA3 /* MMTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,7 @@
 /* Begin PBXFileReference section */
 		0E69F8BEE97DA0BB77D5771F /* Pods-MSWebApp_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSWebApp_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MSWebApp_Example/Pods-MSWebApp_Example.release.xcconfig"; sourceTree = "<group>"; };
 		4016119B6EECD51B3AF09B76 /* Pods-MSWebApp_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSWebApp_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSWebApp_Tests/Pods-MSWebApp_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		4D79016696FFAFB3BD704B29 /* libPods-MSWebApp_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MSWebApp_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB3AD11916E112636694C51 /* Pods-MSWebApp_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSWebApp_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MSWebApp_Tests/Pods-MSWebApp_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		551D2742109DB501FF457EEA /* Pods-MSWebApp_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSWebApp_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSWebApp_Example/Pods-MSWebApp_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* MSWebApp_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSWebApp_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,8 +66,10 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8812EC7219AEE2B7BB9ED004 /* MSWebApp.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MSWebApp.podspec; path = ../MSWebApp.podspec; sourceTree = "<group>"; };
 		AFBCECE0EC0E940EB7D1F3B7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		B9007B7FCAE9AF2198B51AD9 /* Pods_MSWebApp_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSWebApp_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEB6EA6F6E53490030F5038F /* Pods_MSWebApp_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSWebApp_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F88F161675728B5BF9128DAC /* libPods-MSWebApp_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MSWebApp_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC7728421D6FD06200885BA3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		FC7728541D7037EB00885BA3 /* MMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableViewCell.h; sourceTree = "<group>"; };
+		FC7728551D7037EB00885BA3 /* MMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +80,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				CAD296CA80B0D624AD5E69AE /* Pods_MSWebApp_Example.framework in Frameworks */,
+				E6AF94E49A04CCA97A2D4E8C /* libPods-MSWebApp_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +91,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				7AC99587EC4707F222F52282 /* Pods_MSWebApp_Tests.framework in Frameworks */,
+				35A48D3B056D6D73BF9CB135 /* libPods-MSWebApp_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,8 +137,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				BEB6EA6F6E53490030F5038F /* Pods_MSWebApp_Example.framework */,
-				B9007B7FCAE9AF2198B51AD9 /* Pods_MSWebApp_Tests.framework */,
+				4D79016696FFAFB3BD704B29 /* libPods-MSWebApp_Example.a */,
+				F88F161675728B5BF9128DAC /* libPods-MSWebApp_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -146,8 +151,11 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* MViewController.h */,
 				6003F5A6195388D20070C39A /* MViewController.m */,
+				FC7728541D7037EB00885BA3 /* MMTableViewCell.h */,
+				FC7728551D7037EB00885BA3 /* MMTableViewCell.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				FC7728421D6FD06200885BA3 /* Launch Screen.storyboard */,
 			);
 			name = "Example for MSWebApp";
 			path = MSWebApp;
@@ -278,6 +286,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				FC7728431D6FD06200885BA3 /* Launch Screen.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* MAppDelegate.m in Sources */,
+				FC7728561D7037EB00885BA3 /* MMTableViewCell.m in Sources */,
 				6003F5A7195388D20070C39A /* MViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
@@ -516,6 +526,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MSWebApp/MSWebApp-Prefix.pch";
 				INFOPLIST_FILE = "MSWebApp/MSWebApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -532,6 +543,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MSWebApp/MSWebApp-Prefix.pch";
 				INFOPLIST_FILE = "MSWebApp/MSWebApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
