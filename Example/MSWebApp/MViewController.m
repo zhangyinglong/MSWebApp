@@ -66,6 +66,8 @@
 - (IBAction) popTypeDidChanged: (UISegmentedControl *) sender {
     if ( sender.selectedSegmentIndex ) {
         usePresentWebApp = YES;
+    } else {
+        usePresentWebApp = NO;
     }
 }
 

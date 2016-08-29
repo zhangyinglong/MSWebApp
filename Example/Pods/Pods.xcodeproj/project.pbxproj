@@ -15,7 +15,6 @@
 		09713D632612C6864EEE8C22DD5D35E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7CE58C24766CA4C94C849DDCDD2292 /* Foundation.framework */; };
 		0A08FC71C4E3B8E0F8734BCDA7CCA7CB /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E0CFF6D90253ADE78DD800A07DB9C60 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D041320AFDD833A159A13D4C6F16F54 /* MSWebAppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B722B9397E9A0B88D9F89CAD0ECEE4 /* MSWebAppUtil.m */; };
-		0EE8F3900C5F87323031F82A5CFB8661 /* Pods-MSWebApp_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1275A73D699E16A4D38585C7C4BA7674 /* Pods-MSWebApp_Tests-dummy.m */; };
 		0EF8E9AA652DBE2745A7D5C8CD2E3BDE /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 066C575B159A674261921903D94BC58B /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		0F8A8E0D6FAEBF758E0B4D620335F094 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D6C9D9F2AE981B81FAE14390B2B3862 /* FMDatabasePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11B336E91CE118B99E33125F23E20BA9 /* LKDB+Mapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 511C7C7169285C2B2D70E3CF62AF3AFD /* LKDB+Mapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,7 +75,6 @@
 		A8FC6A53F6C1CB4DEFD972664E1AF3B1 /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2C42159B0C6CB3F34CFE67C35E6CE6 /* AFNetworking-dummy.m */; };
 		ACE9C1A6E8D5121C6C5F907C7A9CFCC9 /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C71775F2442AB4EA9531E7400F925DA /* UIRefreshControl+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD359A96DD4AA2C962E50A5CD5524F54 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 878C7D7D13E03419E9F1F5571FC2F6F5 /* UIWebView+AFNetworking.m */; };
-		ADC22213C69E1B37CD896AE5285E82B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7CE58C24766CA4C94C849DDCDD2292 /* Foundation.framework */; };
 		ADCCA8F66684A31E055462D938BB371D /* WKWebViewJavascriptBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E4900C10406D9BA9A7AF1BDA7C10640 /* WKWebViewJavascriptBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0BE398350F83A7B0102C3BBAFC51428 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9DDC6547A1B69FCB4577587E21030D /* UIImageView+AFNetworking.m */; };
 		B2B08C521A8EF41B71F97B10EA026D12 /* LKDBUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 385C8CC3CFA174617A695AF473448AD5 /* LKDBUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -103,7 +101,7 @@
 		E212C2AA95E8F6EFB69A5F1455F291F8 /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = E4018BB38B1623ACB823FB2C57596F11 /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E4F00D15B6636E3475B5394711E38755 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 21036CC0A4F5EFBC1F2F67C104B567C0 /* ioapi.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E7CD4FB35855C83F1EBE72B9A564AC34 /* WPZipArchive-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8FCEC9FF262239E0A581C49D9CEDC3 /* WPZipArchive-dummy.m */; };
-		E843F90BD8A4860A6BBDCA1027301BFC /* Pods-MSWebApp_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8B363F4437D743480C7A5A8CCC52B /* Pods-MSWebApp_Example-dummy.m */; };
+		E843F90BD8A4860A6BBDCA1027301BFC /* Pods-MSWebApp_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E027C4CCF2312E0711D07BFC5860070 /* Pods-MSWebApp_Example-dummy.m */; };
 		EBFF478A110485CD4B8357983DBC9E3F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = B8840CAD61FAC93CF6003FE45A90A588 /* unzip.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		ECBD7AB4DEB0E7F67FB78D11D7B801A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7CE58C24766CA4C94C849DDCDD2292 /* Foundation.framework */; };
 		ED69D9B5A342FE9BD3F170D5CDDEC948 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5267D8074BC84F691BDB3F60CC76E5A3 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -208,23 +206,21 @@
 		028207F64A638CC631A5A7A3EFE5A660 /* NSObject+LKModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+LKModel.h"; path = "LKDBHelper/Helper/NSObject+LKModel.h"; sourceTree = "<group>"; };
 		02912A9626EF8F3121FF68233AB038B1 /* LKDBHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LKDBHelper.h; path = LKDBHelper/Helper/LKDBHelper.h; sourceTree = "<group>"; };
 		02F580444B74CCD0A08CE3591E8AF3EC /* WebViewJavascriptBridge-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WebViewJavascriptBridge-prefix.pch"; sourceTree = "<group>"; };
-		05A44F9D45FE54C403ED81546BFAB02B /* Pods-MSWebApp_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MSWebApp_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		06319418F2D8CD1433E3D610721B1E55 /* MSWebAppUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MSWebAppUtil.h; sourceTree = "<group>"; };
 		066C575B159A674261921903D94BC58B /* FMDatabasePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = src/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
 		070C943D1C624ECAF243D568D0C04D8C /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		072AE44C3609AC5426BFB6B87E354763 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
-		09052EC76197166D76E90ACE3B3AE25B /* Pods-MSWebApp_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSWebApp_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		0AE62A264122B1443305E135445CE6E1 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = src/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		1024691B835249F03D380417F802E29D /* libPods-MSWebApp_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MSWebApp_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A3EAB960A767D8601DF75A7D25F3F6 /* WPZipArchive.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WPZipArchive.h; path = WPZipArchive/WPZipArchive.h; sourceTree = "<group>"; };
-		1275A73D699E16A4D38585C7C4BA7674 /* Pods-MSWebApp_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MSWebApp_Tests-dummy.m"; sourceTree = "<group>"; };
 		12872B2BC9CC707583308E1BCB741DEF /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
 		1549B393108385A54AB7C1524CABB958 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		1D6C9D9F2AE981B81FAE14390B2B3862 /* FMDatabasePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = src/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
-		20A238C28B5293A5CEF78DFC14BEEDBC /* Pods-MSWebApp_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSWebApp_Example-frameworks.sh"; sourceTree = "<group>"; };
 		21036CC0A4F5EFBC1F2F67C104B567C0 /* ioapi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = WPZipArchive/minizip/ioapi.h; sourceTree = "<group>"; };
 		22BD0507724F243CA514EC84E282F998 /* AFImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageDownloader.h; path = "UIKit+AFNetworking/AFImageDownloader.h"; sourceTree = "<group>"; };
+		28A2586E5F944CB29F105B8DB135B1FF /* libPods-MSWebApp_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MSWebApp_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A2F83C686D659DA9496FF4CCF184182 /* Pods-MSWebApp_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSWebApp_Example-frameworks.sh"; sourceTree = "<group>"; };
 		2D83F8018664050DA3165438A5C426E9 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
+		2EF75164C7F501151A0D1B767B010D4B /* libLKDBHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLKDBHelper.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F598B890A53F9813580BAF91A654DBC /* FMDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FMDB-dummy.m"; sourceTree = "<group>"; };
 		2FB34C2744965E42D38AF579FA88920E /* unzip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = WPZipArchive/minizip/unzip.h; sourceTree = "<group>"; };
 		369165B21879D0C325C78F08BEA4E18A /* WebViewJavascriptBridgeBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WebViewJavascriptBridgeBase.m; path = WebViewJavascriptBridge/WebViewJavascriptBridgeBase.m; sourceTree = "<group>"; };
@@ -238,28 +234,32 @@
 		4504863000F05F79AC899E6EB67D6E99 /* MSWebApp-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSWebApp-prefix.pch"; sourceTree = "<group>"; };
 		4666EB93EB2029B20B469832E908131E /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
 		4A800DB7320D5F222952DADFF5A594CF /* mztools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mztools.h; path = WPZipArchive/minizip/mztools.h; sourceTree = "<group>"; };
+		4B1816D5C62D8CCB20543D385B72F108 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4900C10406D9BA9A7AF1BDA7C10640 /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WKWebViewJavascriptBridge.h; path = WebViewJavascriptBridge/WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
 		4F4DBA9E0A8A5A95568E8C098CE9A682 /* WebViewJavascriptBridge_JS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WebViewJavascriptBridge_JS.h; path = WebViewJavascriptBridge/WebViewJavascriptBridge_JS.h; sourceTree = "<group>"; };
 		50164E8BC721C5E014D8A3EAC4680359 /* MSWebApp.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MSWebApp.m; sourceTree = "<group>"; };
 		511C7C7169285C2B2D70E3CF62AF3AFD /* LKDB+Mapping.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "LKDB+Mapping.h"; path = "LKDBHelper/Helper/LKDB+Mapping.h"; sourceTree = "<group>"; };
 		521F4F2F84D092682361C8CD5BA62FD0 /* NSObject+LKModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+LKModel.m"; path = "LKDBHelper/Helper/NSObject+LKModel.m"; sourceTree = "<group>"; };
 		5267D8074BC84F691BDB3F60CC76E5A3 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		5565DB00C8464A54A5A8DA0EEEB295B9 /* libMSWebApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMSWebApp.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5616430C689CCE79C981900C1F2F000F /* mztools.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mztools.c; path = WPZipArchive/minizip/mztools.c; sourceTree = "<group>"; };
 		5B8576BB38350E6E790452FF6C28EE3D /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AFNetworking.h"; path = "UIKit+AFNetworking/UIImage+AFNetworking.h"; sourceTree = "<group>"; };
 		5C462352021883B17574AB4DC1BC6105 /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
 		5C71775F2442AB4EA9531E7400F925DA /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
 		5DD7FEF895436561985E2E14F4DCCA17 /* NSObject+LKDBHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+LKDBHelper.m"; path = "LKDBHelper/Helper/NSObject+LKDBHelper.m"; sourceTree = "<group>"; };
+		5E027C4CCF2312E0711D07BFC5860070 /* Pods-MSWebApp_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MSWebApp_Example-dummy.m"; sourceTree = "<group>"; };
 		607D95F983A0CEE4E23C153F8929B340 /* WKWebViewJavascriptBridge.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WKWebViewJavascriptBridge.m; path = WebViewJavascriptBridge/WKWebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		6545C7B986BA885BBF95894004EFA847 /* WPZipArchive.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WPZipArchive.xcconfig; sourceTree = "<group>"; };
+		654604D86523CC112E62895DDED745BF /* libFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFMDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		655B27B4E59DDE40C2D98EBAA0FE29B1 /* FMResultSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = src/fmdb/FMResultSet.m; sourceTree = "<group>"; };
 		66CA03831845091A25A6F08F294D79A0 /* WPZipArchive.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WPZipArchive.m; path = WPZipArchive/WPZipArchive.m; sourceTree = "<group>"; };
 		66E83826293F40A37C533E7B1A131266 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
-		6748B4C99F3343004A8B9F2E24B1548B /* Pods-MSWebApp_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSWebApp_Example-resources.sh"; sourceTree = "<group>"; };
 		67C4BCFC84B40EABC1001536A45BEDC1 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
 		68375D5DA499507331B5F843AAF0FF98 /* WPZipArchive-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WPZipArchive-prefix.pch"; sourceTree = "<group>"; };
 		687FD9D5C58AB5C66B4401525A03BA83 /* LKDBHelper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LKDBHelper.xcconfig; sourceTree = "<group>"; };
+		695C9E632CA8AA84B6A3EC9D7F0DD3D9 /* Pods-MSWebApp_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MSWebApp_Example.release.xcconfig"; sourceTree = "<group>"; };
+		6B9FDC132E173080522FEBADFE58BD74 /* Pods-MSWebApp_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MSWebApp_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6E0CFF6D90253ADE78DD800A07DB9C60 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
-		6E9A71F62EF6AD434C8745A7BC506AAB /* libWPZipArchive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWPZipArchive.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F7823EB693F86BC947922C3F3542553 /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAutoPurgingImageCache.h; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.h"; sourceTree = "<group>"; };
 		71CA7917EDB00FDD712945F29D38F9CD /* MSWebApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MSWebApp-dummy.m"; sourceTree = "<group>"; };
 		71F0010BBE140FD0EAD111DF92A6DE97 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
@@ -267,26 +267,21 @@
 		73E6E4FF235E2F0A7469B60CF0D797C0 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
 		7AD48324942DAE57BD8542C9563FD524 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		7DE3769C77489014C19A6D2AF8D8A2A7 /* WebViewJavascriptBridge-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WebViewJavascriptBridge-dummy.m"; sourceTree = "<group>"; };
-		80CCB2D6B65C326701B1CFD28F66C20C /* libLKDBHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLKDBHelper.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		835E66FE4C9F99F5BE2F6CE498B2CCED /* Pods-MSWebApp_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MSWebApp_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		8644A63A71942737D80391D8E0844A29 /* FMDB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FMDB.xcconfig; sourceTree = "<group>"; };
 		878C7D7D13E03419E9F1F5571FC2F6F5 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		87A5B030BF0C8CF6CFE7C08B9EFB4F86 /* FMDatabase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = src/fmdb/FMDatabase.m; sourceTree = "<group>"; };
-		8AFE882513E7A09031A3F6E0706A769D /* Pods-MSWebApp_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MSWebApp_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		8CCD786B4A1813BC0E605B8D31C22548 /* MSWebApp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MSWebApp.xcconfig; sourceTree = "<group>"; };
 		8ED89A44AB77C448A1121C971E78CEED /* LKDBUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LKDBUtils.m; path = LKDBHelper/Helper/LKDBUtils.m; sourceTree = "<group>"; };
 		91187623812CB7B552283DFEB90C1BF5 /* MSWebAppOp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MSWebAppOp.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9403AE6DB1D27641463852DC12B5E491 /* WebViewJavascriptBridgeBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WebViewJavascriptBridgeBase.h; path = WebViewJavascriptBridge/WebViewJavascriptBridgeBase.h; sourceTree = "<group>"; };
-		94D9A0F903F6042A1AE4275F04E65130 /* Pods-MSWebApp_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MSWebApp_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		951AF9CC1055249CF870C560D658A55C /* LKDBHelper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LKDBHelper-prefix.pch"; sourceTree = "<group>"; };
 		99A1B5087CAF0F2814106A6F12D1093D /* FMDatabaseQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = src/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
-		9EE8B363F4437D743480C7A5A8CCC52B /* Pods-MSWebApp_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MSWebApp_Example-dummy.m"; sourceTree = "<group>"; };
 		9FCF980639C480EE4E170AF615B4BD74 /* FMDatabase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = src/fmdb/FMDatabase.h; sourceTree = "<group>"; };
 		A01577FBDF24F8B618238D8719368725 /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = WPZipArchive/minizip/ioapi.c; sourceTree = "<group>"; };
-		A4A1144778311A6E8BA9CDA12343E319 /* Pods-MSWebApp_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MSWebApp_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD7E99A5BAD7651BD5EB95027A61A369 /* Common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Common.h; path = WPZipArchive/Common.h; sourceTree = "<group>"; };
 		B0C5AA5878A3A21E6933D5126D20A006 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WebViewJavascriptBridge.m; path = WebViewJavascriptBridge/WebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		B21237E01C37265550B39C6678C8DD84 /* Pods-MSWebApp_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MSWebApp_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B6DD83B3A88233A4EFA458D74866100D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		B8840CAD61FAC93CF6003FE45A90A588 /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = WPZipArchive/minizip/unzip.c; sourceTree = "<group>"; };
 		B99B49BEEEF0599D9A8A5C7E71FF1FC3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
@@ -296,40 +291,35 @@
 		BE9DDC6547A1B69FCB4577587E21030D /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		BEB8212F1B635FAED3C6A8719E1ED963 /* zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = zip.h; path = WPZipArchive/minizip/zip.h; sourceTree = "<group>"; };
 		BF6244FF8124F96F224C2E795F8B2FBB /* MSWebAPI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MSWebAPI.h; sourceTree = "<group>"; };
-		C1222F8EC109223FBBF1AC0189D4399A /* libMSWebApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMSWebApp.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3AD8B2515453DF5606B8F2DB3AD8718 /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
 		C5776EFA53622FBA8F3DFA306FB02B05 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WebViewJavascriptBridge.h; path = WebViewJavascriptBridge/WebViewJavascriptBridge.h; sourceTree = "<group>"; };
 		C5AB70DF9ABA98DF4C5E65C73373A0F8 /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
-		C82B94EB73694C23F2063538882A0FC3 /* libWebViewJavascriptBridge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWebViewJavascriptBridge.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D8BC3D7AF9165A22F5B287D17CD1EB /* WebViewJavascriptBridge_JS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WebViewJavascriptBridge_JS.m; path = WebViewJavascriptBridge/WebViewJavascriptBridge_JS.m; sourceTree = "<group>"; };
 		CA14B9B2BF49F6193671B8A8147D4F8F /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		CAA922E39533075D6B42658677EC38B5 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
 		CE6F830EFAE0CC548C33E85F967E8034 /* MSWebAPI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MSWebAPI.m; sourceTree = "<group>"; };
 		CFE815C669956A8962CB17664EC5D942 /* LKDBHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LKDBHelper.m; path = LKDBHelper/Helper/LKDBHelper.m; sourceTree = "<group>"; };
-		D298867203CB46CEF821F8ACB4413166 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1F1F5C763083603B114E48B08313F9F /* Pods-MSWebApp_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MSWebApp_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		D2BC7D523DDC02A4C0DEE854A018CAD2 /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
 		D2E79826F8EB1194DFFFBC816DD39D71 /* MSWebAppOp.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MSWebAppOp.m; sourceTree = "<group>"; };
 		D6B722B9397E9A0B88D9F89CAD0ECEE4 /* MSWebAppUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MSWebAppUtil.m; sourceTree = "<group>"; };
 		D8E992AACAE2515B5C9D936055901378 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = src/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
 		D8FA7A3B3945D1E260A776C5D90FE90A /* LKDB+Mapping.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "LKDB+Mapping.m"; path = "LKDBHelper/Helper/LKDB+Mapping.m"; sourceTree = "<group>"; };
 		D94E6AFE6D2CAB075FEC14DEDEAAEEA7 /* MSWebApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MSWebApp.h; sourceTree = "<group>"; };
-		D9D48AE312BC63B3932DDFDE8DB6E877 /* Pods-MSWebApp_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MSWebApp_Example.release.xcconfig"; sourceTree = "<group>"; };
 		DAA56B8E2A47F004CAA59D4E0A23C6D8 /* MSWebViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MSWebViewController.h; sourceTree = "<group>"; };
 		DC0E10D8D1FA025B2980AE7B1362D08E /* FMResultSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = src/fmdb/FMResultSet.h; sourceTree = "<group>"; };
-		DC11C87A4E1263BA062724A86E7E68CF /* libPods-MSWebApp_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MSWebApp_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCB522BA9C64AD4FEAE9AB84163E458 /* FMDB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FMDB-prefix.pch"; sourceTree = "<group>"; };
-		DD5ED4158382ADB1B6969F3DD4B40542 /* Pods-MSWebApp_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSWebApp_Tests-resources.sh"; sourceTree = "<group>"; };
-		DFA9BB30CE99267C7B4A6D284A3E3237 /* Pods-MSWebApp_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MSWebApp_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		E24D06CCBA364FE8815D4D1E228127DF /* libWebViewJavascriptBridge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWebViewJavascriptBridge.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4018BB38B1623ACB823FB2C57596F11 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
+		E6B819A77F8B79635FFD085E9C8AFE74 /* libWPZipArchive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWPZipArchive.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7F21CBF45D72B604C9B0C108F263417 /* Pods-MSWebApp_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MSWebApp_Example-resources.sh"; sourceTree = "<group>"; };
 		E9851C25E204A772D6B0533EA8698CB4 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = src/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
-		EBA32C11D0B344E9A85588342709BC4C /* libFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFMDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F184096142A155370DEFA8F7F03FDA73 /* crypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = WPZipArchive/minizip/crypt.h; sourceTree = "<group>"; };
 		F1B39125E5BA7E4BE573E1AAB0E686C5 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWebView+AFNetworking.h"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		F48C8616DDF28ABBEF56750D221F88F0 /* LKDBHelper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LKDBHelper-dummy.m"; sourceTree = "<group>"; };
 		F4AF903F2A348E03FCA38AF261597179 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
 		F6DB19DB381245E897205B29693F04F4 /* AFImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageDownloader.m; path = "UIKit+AFNetworking/AFImageDownloader.m"; sourceTree = "<group>"; };
 		F7DA0B0548D512A8604BE973305EE317 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
-		FA01855197B31E481F2E7FDAA02E8DDB /* Pods-MSWebApp_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MSWebApp_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FCD252E2543A518DED19DB9BB93D59C8 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		FE48F3FB244ED52EA08A73535E8B735C /* NSObject+LKDBHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+LKDBHelper.h"; path = "LKDBHelper/Helper/NSObject+LKDBHelper.h"; sourceTree = "<group>"; };
 		FF1A9447F1E3A47801273D63820D56CE /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
@@ -337,14 +327,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		00F03FE109D4889576674E3ACFEE1CF9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ADC22213C69E1B37CD896AE5285E82B6 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		05B98F02578087F8CEAF3FCFE8059B92 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -420,19 +402,19 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		03973F0A258113BA1CBBABF81DC5E3AE /* Products */ = {
+		0DB3F6233D21F528EC726547215BEAFA /* Pods-MSWebApp_Example */ = {
 			isa = PBXGroup;
 			children = (
-				D298867203CB46CEF821F8ACB4413166 /* libAFNetworking.a */,
-				EBA32C11D0B344E9A85588342709BC4C /* libFMDB.a */,
-				80CCB2D6B65C326701B1CFD28F66C20C /* libLKDBHelper.a */,
-				C1222F8EC109223FBBF1AC0189D4399A /* libMSWebApp.a */,
-				1024691B835249F03D380417F802E29D /* libPods-MSWebApp_Example.a */,
-				DC11C87A4E1263BA062724A86E7E68CF /* libPods-MSWebApp_Tests.a */,
-				C82B94EB73694C23F2063538882A0FC3 /* libWebViewJavascriptBridge.a */,
-				6E9A71F62EF6AD434C8745A7BC506AAB /* libWPZipArchive.a */,
+				6B9FDC132E173080522FEBADFE58BD74 /* Pods-MSWebApp_Example-acknowledgements.markdown */,
+				D1F1F5C763083603B114E48B08313F9F /* Pods-MSWebApp_Example-acknowledgements.plist */,
+				5E027C4CCF2312E0711D07BFC5860070 /* Pods-MSWebApp_Example-dummy.m */,
+				2A2F83C686D659DA9496FF4CCF184182 /* Pods-MSWebApp_Example-frameworks.sh */,
+				E7F21CBF45D72B604C9B0C108F263417 /* Pods-MSWebApp_Example-resources.sh */,
+				B21237E01C37265550B39C6678C8DD84 /* Pods-MSWebApp_Example.debug.xcconfig */,
+				695C9E632CA8AA84B6A3EC9D7F0DD3D9 /* Pods-MSWebApp_Example.release.xcconfig */,
 			);
-			name = Products;
+			name = "Pods-MSWebApp_Example";
+			path = "Target Support Files/Pods-MSWebApp_Example";
 			sourceTree = "<group>";
 		};
 		0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */ = {
@@ -490,6 +472,14 @@
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
+		64A8E4881B361096AE810E416711C964 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0DB3F6233D21F528EC726547215BEAFA /* Pods-MSWebApp_Example */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
 		68FE95F885D6CABC2F4A31865D206471 /* standard */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,21 +496,6 @@
 				655B27B4E59DDE40C2D98EBAA0FE29B1 /* FMResultSet.m */,
 			);
 			name = standard;
-			sourceTree = "<group>";
-		};
-		6C4394B0842EB1538F65A46FDD0F17CA /* Pods-MSWebApp_Example */ = {
-			isa = PBXGroup;
-			children = (
-				05A44F9D45FE54C403ED81546BFAB02B /* Pods-MSWebApp_Example-acknowledgements.markdown */,
-				8AFE882513E7A09031A3F6E0706A769D /* Pods-MSWebApp_Example-acknowledgements.plist */,
-				9EE8B363F4437D743480C7A5A8CCC52B /* Pods-MSWebApp_Example-dummy.m */,
-				20A238C28B5293A5CEF78DFC14BEEDBC /* Pods-MSWebApp_Example-frameworks.sh */,
-				6748B4C99F3343004A8B9F2E24B1548B /* Pods-MSWebApp_Example-resources.sh */,
-				835E66FE4C9F99F5BE2F6CE498B2CCED /* Pods-MSWebApp_Example.debug.xcconfig */,
-				D9D48AE312BC63B3932DDFDE8DB6E877 /* Pods-MSWebApp_Example.release.xcconfig */,
-			);
-			name = "Pods-MSWebApp_Example";
-			path = "Target Support Files/Pods-MSWebApp_Example";
 			sourceTree = "<group>";
 		};
 		71F3DF80BCC831B9B723923E35CCAEFC /* UIKit */ = {
@@ -577,8 +552,8 @@
 				5ADF54F8215E5DE9EBADF5E249BBA728 /* Development Pods */,
 				0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */,
 				A3E8F265B0827A7BE9B1592BBBCB6234 /* Pods */,
-				03973F0A258113BA1CBBABF81DC5E3AE /* Products */,
-				BEBBF55590EADCA36169B8D9F5B90978 /* Targets Support Files */,
+				DAD361DAA68420C61FEAE47EC61FB943 /* Products */,
+				64A8E4881B361096AE810E416711C964 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -660,21 +635,6 @@
 			path = "Example/Pods/Target Support Files/MSWebApp";
 			sourceTree = "<group>";
 		};
-		B049CC7EC39393117C799CD0C35CB8FD /* Pods-MSWebApp_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				94D9A0F903F6042A1AE4275F04E65130 /* Pods-MSWebApp_Tests-acknowledgements.markdown */,
-				DFA9BB30CE99267C7B4A6D284A3E3237 /* Pods-MSWebApp_Tests-acknowledgements.plist */,
-				1275A73D699E16A4D38585C7C4BA7674 /* Pods-MSWebApp_Tests-dummy.m */,
-				09052EC76197166D76E90ACE3B3AE25B /* Pods-MSWebApp_Tests-frameworks.sh */,
-				DD5ED4158382ADB1B6969F3DD4B40542 /* Pods-MSWebApp_Tests-resources.sh */,
-				A4A1144778311A6E8BA9CDA12343E319 /* Pods-MSWebApp_Tests.debug.xcconfig */,
-				FA01855197B31E481F2E7FDAA02E8DDB /* Pods-MSWebApp_Tests.release.xcconfig */,
-			);
-			name = "Pods-MSWebApp_Tests";
-			path = "Target Support Files/Pods-MSWebApp_Tests";
-			sourceTree = "<group>";
-		};
 		B5C3868EF2952644813AE1F626E075FF /* LKDBHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,15 +664,6 @@
 			path = "../Target Support Files/LKDBHelper";
 			sourceTree = "<group>";
 		};
-		BEBBF55590EADCA36169B8D9F5B90978 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				6C4394B0842EB1538F65A46FDD0F17CA /* Pods-MSWebApp_Example */,
-				B049CC7EC39393117C799CD0C35CB8FD /* Pods-MSWebApp_Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
 		C7FD5C5E92F6632FB2A97D92834D9A17 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -731,6 +682,20 @@
 				E377CE0C254C58D56592782FFD2B207E /* Support Files */,
 			);
 			path = FMDB;
+			sourceTree = "<group>";
+		};
+		DAD361DAA68420C61FEAE47EC61FB943 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B1816D5C62D8CCB20543D385B72F108 /* libAFNetworking.a */,
+				654604D86523CC112E62895DDED745BF /* libFMDB.a */,
+				2EF75164C7F501151A0D1B767B010D4B /* libLKDBHelper.a */,
+				5565DB00C8464A54A5A8DA0EEEB295B9 /* libMSWebApp.a */,
+				28A2586E5F944CB29F105B8DB135B1FF /* libPods-MSWebApp_Example.a */,
+				E24D06CCBA364FE8815D4D1E228127DF /* libWebViewJavascriptBridge.a */,
+				E6B819A77F8B79635FFD085E9C8AFE74 /* libWPZipArchive.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		E0B2814CC21233382DD65A7B399E1CCD /* Security */ = {
@@ -887,7 +852,7 @@
 			);
 			name = WPZipArchive;
 			productName = WPZipArchive;
-			productReference = 6E9A71F62EF6AD434C8745A7BC506AAB /* libWPZipArchive.a */;
+			productReference = E6B819A77F8B79635FFD085E9C8AFE74 /* libWPZipArchive.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		3528FA1DBE3E5C6AB799FC7BEA473755 /* LKDBHelper */ = {
@@ -905,23 +870,7 @@
 			);
 			name = LKDBHelper;
 			productName = LKDBHelper;
-			productReference = 80CCB2D6B65C326701B1CFD28F66C20C /* libLKDBHelper.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		40EA2145CC9B1966EC3BFF7BF52122EF /* Pods-MSWebApp_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9E608B6649F3E7E704B8B734E2557ECE /* Build configuration list for PBXNativeTarget "Pods-MSWebApp_Tests" */;
-			buildPhases = (
-				43123ED2187416EE11BF43C6CE8F7807 /* Sources */,
-				00F03FE109D4889576674E3ACFEE1CF9 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-MSWebApp_Tests";
-			productName = "Pods-MSWebApp_Tests";
-			productReference = DC11C87A4E1263BA062724A86E7E68CF /* libPods-MSWebApp_Tests.a */;
+			productReference = 2EF75164C7F501151A0D1B767B010D4B /* libLKDBHelper.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		928353533005A4198EBDA5B700D37B64 /* AFNetworking */ = {
@@ -938,7 +887,7 @@
 			);
 			name = AFNetworking;
 			productName = AFNetworking;
-			productReference = D298867203CB46CEF821F8ACB4413166 /* libAFNetworking.a */;
+			productReference = 4B1816D5C62D8CCB20543D385B72F108 /* libAFNetworking.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		97387EF7974B283303DECAAB1D53C96D /* MSWebApp */ = {
@@ -960,7 +909,7 @@
 			);
 			name = MSWebApp;
 			productName = MSWebApp;
-			productReference = C1222F8EC109223FBBF1AC0189D4399A /* libMSWebApp.a */;
+			productReference = 5565DB00C8464A54A5A8DA0EEEB295B9 /* libMSWebApp.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		9F12FB4A63E20F601CFB2E64A65B57C1 /* FMDB */ = {
@@ -977,7 +926,7 @@
 			);
 			name = FMDB;
 			productName = FMDB;
-			productReference = EBA32C11D0B344E9A85588342709BC4C /* libFMDB.a */;
+			productReference = 654604D86523CC112E62895DDED745BF /* libFMDB.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		CEFE175C81D169757C81FB5883A3F95D /* WebViewJavascriptBridge */ = {
@@ -994,7 +943,7 @@
 			);
 			name = WebViewJavascriptBridge;
 			productName = WebViewJavascriptBridge;
-			productReference = C82B94EB73694C23F2063538882A0FC3 /* libWebViewJavascriptBridge.a */;
+			productReference = E24D06CCBA364FE8815D4D1E228127DF /* libWebViewJavascriptBridge.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		EF8ECFFF91E153119D68A865DCF574F9 /* Pods-MSWebApp_Example */ = {
@@ -1016,7 +965,7 @@
 			);
 			name = "Pods-MSWebApp_Example";
 			productName = "Pods-MSWebApp_Example";
-			productReference = 1024691B835249F03D380417F802E29D /* libPods-MSWebApp_Example.a */;
+			productReference = 28A2586E5F944CB29F105B8DB135B1FF /* libPods-MSWebApp_Example.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -1036,7 +985,7 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 03973F0A258113BA1CBBABF81DC5E3AE /* Products */;
+			productRefGroup = DAD361DAA68420C61FEAE47EC61FB943 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1045,7 +994,6 @@
 				3528FA1DBE3E5C6AB799FC7BEA473755 /* LKDBHelper */,
 				97387EF7974B283303DECAAB1D53C96D /* MSWebApp */,
 				EF8ECFFF91E153119D68A865DCF574F9 /* Pods-MSWebApp_Example */,
-				40EA2145CC9B1966EC3BFF7BF52122EF /* Pods-MSWebApp_Tests */,
 				CEFE175C81D169757C81FB5883A3F95D /* WebViewJavascriptBridge */,
 				0355C35C9AF95C26D788CD69851472A9 /* WPZipArchive */,
 			);
@@ -1075,14 +1023,6 @@
 				79ED576E9FB39E60447215AE9143A2CE /* WebViewJavascriptBridge_JS.m in Sources */,
 				D15F09EF53DD68405F8EFA1C5AF3460A /* WebViewJavascriptBridgeBase.m in Sources */,
 				C1417FDD459A151CE4BE85AC7E20B8FF /* WKWebViewJavascriptBridge.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		43123ED2187416EE11BF43C6CE8F7807 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0EE8F3900C5F87323031F82A5CFB8661 /* Pods-MSWebApp_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1255,27 +1195,6 @@
 			};
 			name = Debug;
 		};
-		12286E6B21B97EC9CD4BC92D17F0C5B1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA01855197B31E481F2E7FDAA02E8DDB /* Pods-MSWebApp_Tests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		126FB1F7A28A54D7A3BF4818FCC81EB4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CCD786B4A1813BC0E605B8D31C22548 /* MSWebApp.xcconfig */;
@@ -1299,7 +1218,7 @@
 		};
 		1788936AA2F13EAC07E95C51F3B60D90 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D9D48AE312BC63B3932DDFDE8DB6E877 /* Pods-MSWebApp_Example.release.xcconfig */;
+			baseConfigurationReference = 695C9E632CA8AA84B6A3EC9D7F0DD3D9 /* Pods-MSWebApp_Example.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1362,7 +1281,7 @@
 		};
 		2B56297480D421910EE4D3588CD54020 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 835E66FE4C9F99F5BE2F6CE498B2CCED /* Pods-MSWebApp_Example.debug.xcconfig */;
+			baseConfigurationReference = B21237E01C37265550B39C6678C8DD84 /* Pods-MSWebApp_Example.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1591,27 +1510,6 @@
 			};
 			name = Debug;
 		};
-		F3F9897CCB5B3589CEBD7A5A44530832 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4A1144778311A6E8BA9CDA12343E319 /* Pods-MSWebApp_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
 		F888770CB3E87CA3817AD55F54E88EE5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8644A63A71942737D80391D8E0844A29 /* FMDB.xcconfig */;
@@ -1716,15 +1614,6 @@
 			buildConfigurations = (
 				0D4DBE36540A9F9F355C16679B045F59 /* Debug */,
 				66C46CEEA7BF6B8F0C402AE474CD8C7F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9E608B6649F3E7E704B8B734E2557ECE /* Build configuration list for PBXNativeTarget "Pods-MSWebApp_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F3F9897CCB5B3589CEBD7A5A44530832 /* Debug */,
-				12286E6B21B97EC9CD4BC92D17F0C5B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
