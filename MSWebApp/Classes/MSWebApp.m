@@ -64,7 +64,7 @@
     }
     
     // http://tpl.zhaogeshi.com/mainModule/enter.tpl?a=b&b=c
-    if ( ![URL.host isEqualToString:@"tpl.zhaogeshi.com"] ) {
+    if ( ![URL.host isEqualToString:[NSURL URLWithString:[MSWebApp webApp].fullURL].host] ) {
         return [[MSWebViewController alloc] initWithURLs:string];
     }
     

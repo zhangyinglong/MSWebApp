@@ -9,7 +9,11 @@
 
 Config the WebApp for use:
 
-step1. `#import <MSWebApp/MSWebApp.h>`
+step1. 
+
+```objective-c
+#import <MSWebApp/MSWebApp.h>
+```
 
 step2: 
 
@@ -98,6 +102,37 @@ SubClass:
 ```objc
 [MSWebApp webApp].registedClass = [SubClass class];
 ```
+
+step4. Use it.
+
+you can use: [MSWebApp instanceWithTplURL:(URL)];
+
+explain the `URL`: 
+
+http://{[MSWebApp webApp].fullURL.host}/{ModuleId}/{URLsKey}?{query}
+
+`[MSWebApp webApp].fullURL.host`is the host you set.
+
+`ModuleId` is module mid, identifier.
+
+`URLsKey` is the key in urls map, like:
+
+```
+{
+                                mid = vueModule;
+                                packageurl = "http://um.devdylan.cn/vueModule.zip";
+                                urls =                 {
+                                    "enter.tpl" = "index.html";
+                                };
+                                version = "3.4.6";
+}
+```
+
+if you want visit `index.html`,
+
+the URL must be : `http://fullURL.host/vueModule/enter.tpl?a=b`
+
+step5. Enjoy it !
 
 ## Example
 
