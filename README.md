@@ -91,7 +91,7 @@ if ( usePresentWebApp ) {
 }
 ```
 
-`MSWebViewController` have an bridge, you can subClass of it and registe it for use.
+`MSWebViewController` have inner js bridge, use `WebViewJavaScriptBridge`, you can subClass of it and registe it for use.
 
 SubClass:
 
