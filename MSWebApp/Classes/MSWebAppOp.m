@@ -39,38 +39,60 @@
 }
 
 - (void) get {
-    __weak typeof(self) weakSelf = self;
-    
     NSURL *documentsDirectoryURL = [NSURL fileURLWithPath:[MSWebAppUtil getLocalCachePath]];
     NSURL *U = [documentsDirectoryURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"%@.zip", self.mid]]];
     
-    // NSLog(@"开始下载模块: %@", _mid);
-    [[MSWebApp webApp].net
-     getModule:_packageurl
-     save2:U
-     handler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-         if ( !error ) {
-             // Unzip
-             NSString * fp = [[MSWebAppUtil getLocalCachePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.zip", self.mid]];
-             [WPZipArchive unzipFileAtPath:fp toDestination:[MSWebAppUtil getLocalCachePath] progressHandler:^(NSString *entry, unz_file_info zipInfo, long entryNumber, long total) {
-                 
-             } completionHandler:^(NSString *path, BOOL succeeded, NSError *error) {
-                 if ( succeeded ) {
-                     [[NSFileManager defaultManager] removeItemAtPath:fp error:nil];
-                     weakSelf.downloaded = YES;
-                     [[NSNotificationCenter defaultCenter] postNotificationName:@"MSWebModuleFetchOk" object:weakSelf.mid];
-                     [[MSWebApp webApp].op saveToDB];
-                 }
-                 else [[NSNotificationCenter defaultCenter] postNotificationName:@"MSWebModuleFetchErr" object:weakSelf.mid];
-             }];
-         } else {
-             [[NSNotificationCenter defaultCenter] postNotificationName:@"MSWebModuleFetchErr" object:weakSelf.mid];
-         }
-     } progressHandler:^(CGFloat progress) {
-         if ( weakSelf.downloadProgressHandler ) {
-             weakSelf.downloadProgressHandler(weakSelf.mid, progress);
-         }
-     }];
+    if ( [_sync isEqualToString:@"y"] ) {
+        NSData * zipData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:_packageurl]];
+        if ( zipData ) {
+            [[NSFileManager defaultManager] removeItemAtURL:U error:nil];
+            if ( [zipData writeToURL:U atomically:YES] ) {
+                [self unzip];
+                return;
+            }
+        }
+        [self postLoadedFailure];
+    } else {
+        __weak typeof(self) weakSelf = self;
+        [[MSWebApp webApp].net
+         getModule:_packageurl
+         save2:U
+         handler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+             if ( !error ) {
+                 [weakSelf unzip];
+             } else {
+                 [weakSelf postLoadedFailure];
+             }
+         } progressHandler:^(CGFloat progress) {
+             if ( weakSelf.downloadProgressHandler ) {
+                 weakSelf.downloadProgressHandler(weakSelf.mid, progress);
+             }
+         }];
+    }
+}
+
+- (void) unzip {
+    __weak typeof(self) weakSelf = self;
+    NSString * fp = [[MSWebAppUtil getLocalCachePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.zip", _mid]];
+    [WPZipArchive unzipFileAtPath:fp toDestination:[MSWebAppUtil getLocalCachePath] progressHandler:^(NSString *entry, unz_file_info zipInfo, long entryNumber, long total) {
+        
+    } completionHandler:^(NSString *path, BOOL succeeded, NSError *error) {
+        if ( succeeded ) {
+            [[NSFileManager defaultManager] removeItemAtPath:fp error:nil];
+            weakSelf.downloaded = YES;
+            [weakSelf postLoadedSuccess];
+            [[MSWebApp webApp].op saveToDB];
+        }
+        else [weakSelf postLoadedFailure];
+    }];
+}
+
+- (void) postLoadedFailure {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MSWebModuleFetchErr" object:_mid];
+}
+
+- (void) postLoadedSuccess {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MSWebModuleFetchOk" object:_mid];
 }
 
 - (void) setValue: (id) value

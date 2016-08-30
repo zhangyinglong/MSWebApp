@@ -32,6 +32,11 @@
 @interface MSWebAppModule : NSObject
 
 /**
+ Loaded with sync.
+ */
+@property ( nonatomic, strong ) NSString *sync;
+
+/**
  Module identifier.
  */
 @property ( nonatomic, strong ) NSString *mid;

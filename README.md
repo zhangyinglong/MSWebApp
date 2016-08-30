@@ -65,6 +65,7 @@ Config request result must like this: !!! 服务端返回的参数类似以下�
                                     "enter.tpl" = "index.html";
                                 };
                                 version = ib42;
+                                sync = "n"
                             },
                             {
                                 mid = bootstrap;
@@ -72,6 +73,7 @@ Config request result must like this: !!! 服务端返回的参数类似以下�
                                 urls =                 {
                                 };
                                 version = ib43;
+                                sync = "n"
                             },
                             {
                                 mid = vueModule;
@@ -80,6 +82,7 @@ Config request result must like this: !!! 服务端返回的参数类似以下�
                                     "enter.tpl" = "index.html";
                                 };
                                 version = "3.4.6";
+                                sync = "n"
                             }
                         );
         version = "3.3.4";
@@ -157,6 +160,7 @@ URLsKey，映射关系，方便的通过xxx.tpl映射到多级绝对路径地址
                                     "enter.tpl" = "index.html";
                                 };
                                 version = "3.4.6";
+                                sync = "n"
 }
 ```
 
@@ -238,14 +242,14 @@ http://tpl.zhaogeshi.me/{moduleName}/{tplid}.tpl?{param}
 
 数据请求示例, Content-Type: application/json
 
-```json
+```
 app: "MEC",
 version: "a4fc6"
 ```
 
 #### 返回值
 
-```json
+```
 {
     "version": "WebApp 配置文件版本号",
     "module": [
@@ -254,6 +258,7 @@ version: "a4fc6"
             "version": "子模块版本号字串, 一般为Git短版本号",
             "packageurl": "http://um.devdylan.cn/bootstrap.zip", # 子模块下载地址
             "urls": {}, # 子模块URL映射表: `TPL标识：真实路径`
+            "sync": "y" # 是否同步加载
         },
         {
             "mid": "LeafModules",
@@ -264,6 +269,7 @@ version: "a4fc6"
                 "classPayment.tpl": "classPayment.html",
                 "detail.tpl": "detail/detail.html"
             },
+            "sync": "y"
         }
     ]
 }
@@ -320,10 +326,11 @@ version: "a4fc6"
 | version    | String | 新的Git短版本号 |
 | packageurl | String | 模块下载地址    |
 | urls       | Object | 对应规则      |
+| sync       | String | 是否同步加载 y/n |
 
 返回值：
 
-```json
+```
 {
   "message": "更新成功!",
   "status" : "successful",
@@ -343,10 +350,11 @@ version: "a4fc6"
 |            |        |         |
 | packageurl | String | 子模块下载地址 |
 | urls       | Object | 映射表     |
+| sync       | String | 是否同步加载 y/n |
 
 返回值：
 
-```json
+```
 {
   "message": "创建成功!",
   "status" : "successful",
@@ -355,6 +363,7 @@ version: "a4fc6"
             "version": "子模块版本号字串, 一般为Git短版本号",
             "packageurl": "http://um.devdylan.cn/bootstrap.zip", # 子模块下载地址
             "urls": {}, # 子模块URL映射表: `TPL标识：真实路径`
+            "sync": "y"
   }
 }
 ```
