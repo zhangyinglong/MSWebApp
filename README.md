@@ -327,4 +327,7 @@ version: "a4fc6"
 Q：如果想等加载完成后再进入该怎么办？
 A：注册监听, `MSWebModuleFetchOk`与`MSWebAppGetOptionSuccess`, 一般情况下会先接收到`MSWebAppGetOptionSuccess`, 这个时候在启动页, 读取模块数组, 等待FetchOK通知, 收到通知后给临时数组增加一个对象, 当临时数组的数量等于WebApp总配置中op的数量相等的时候即为加载全部成功。
 
+Q：如果加载配置文件失败怎么办？
+A：注册监听：`MSWebAppGetOptionFailure`, 收到后延时重新做 `startWithType:`即可。
+
 $更新时间: 2016-8-25 
