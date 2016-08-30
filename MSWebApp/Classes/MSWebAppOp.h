@@ -76,4 +76,9 @@
  */
 @property ( nonatomic, copy ) void (^downloadProgressHandler)(NSString *mid, CGFloat progress);
 
+/**
+ Module desc
+ */
+@property ( nonatomic, strong ) NSString * desc;
+
 @end

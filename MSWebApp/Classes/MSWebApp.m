@@ -10,6 +10,11 @@
 #import "MSWebAppUtil.h"
 #import "NSObject+LKDBHelper.h"
 
+NSString MS_CONST MSWebAppGetOptionSuccess = @"MSWebAppGetOptionSuccess";
+NSString MS_CONST MSWebModuleFetchBegin = @"MSWebModuleFetchBegin";
+NSString MS_CONST MSWebModuleFetchErr = @"MSWebModuleFetchErr";
+NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
+
 @interface MSWebApp ()
 
 @end

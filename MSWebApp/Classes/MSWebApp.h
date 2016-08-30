@@ -12,6 +12,14 @@
 #import "MSWebAPI.h"
 #import "MSWebAppOp.h"
 
+#undef  MS_CONST
+#define MS_CONST *const
+
+FOUNDATION_EXTERN NSString MS_CONST MSWebAppGetOptionSuccess;
+FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchBegin;
+FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchErr;
+FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchOk;
+
 /**
  MSWebApp: Hybrid framework, for local html5.zip updated dynamic.
  */

@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *urlField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property ( nonatomic, strong ) NSMutableDictionary *dataDict;
 
 @end
 
@@ -27,20 +28,42 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     usePresentWebApp = NO;
+    _dataDict       = [NSMutableDictionary dictionaryWithCapacity:1];
     
     [[NSNotificationCenter defaultCenter]
-     addObserver:_tableView
-     selector:@selector(reloadData)
-     name:@"MSWebModuleFetchOk"
+     addObserver:self
+     selector:@selector(newModuleProcressed:)
+     name:MSWebModuleFetchOk
      object:nil];
     [[NSNotificationCenter defaultCenter]
-     addObserver:_tableView
-     selector:@selector(reloadData)
-     name:@"MSWebModuleFetchErr"
+     addObserver:self
+     selector:@selector(newModuleProcressed:)
+     name:MSWebModuleFetchErr
+     object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(newModuleProcressed:)
+     name:MSWebModuleFetchBegin
      object:nil];
     
     [MSWebApp webApp].fullURL = @"http://192.168.199.173:8080/webapp.json";
     [MSWebApp startWithType:@"MEC"];
+}
+
+- (void) newModuleProcressed: (NSNotification *) notification {
+    MSWebAppModule * module = notification.object;
+    [_dataDict setObject:module forKey:module.mid];
+    if ( [notification.name isEqualToString:MSWebModuleFetchOk] ) {
+        // 模块加载成功
+        module.desc = @"加载成功";
+    } else if ( [notification.name isEqualToString:MSWebModuleFetchErr] ) {
+        // 模块加载失败
+        module.desc = @"加载失败";
+    } else {
+        // 模块开始加载
+        module.desc = @"加载中...";
+    }
+    [_tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -48,13 +71,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [MSWebApp webApp].op.module.count;
+    return _dataDict.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MMTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ModuleCell"];
-    cell.mLabel.text = [MSWebApp webApp].op.module[indexPath.row].mid;
-    cell.vLabel.text = [MSWebApp webApp].op.module[indexPath.row].version;
+    
+    MSWebAppModule * module = _dataDict[_dataDict.allKeys[indexPath.row]];
+    cell.mLabel.text = module.mid;
+    cell.vLabel.text = module.desc;
+    
     return cell;
 }
 

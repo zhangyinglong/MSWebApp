@@ -18,7 +18,8 @@
     MSWebAppOp * op = [MSWebApp webApp].op;
     // Get Old Op, And remove from db.
     MSWebAppOp * oldOp = [MSWebAppOp searchSingleWithWhere:nil orderBy:nil];
-    
+    // Post notification
+    [[NSNotificationCenter defaultCenter] postNotificationName:MSWebAppGetOptionSuccess object:op ?: oldOp];
     if ( !op ) {
         [MSWebApp webApp].op = oldOp;
         return;
@@ -64,7 +65,7 @@
          if ( !obj.downloaded ) {
              [obj get];
          } else {
-             [[NSNotificationCenter defaultCenter] postNotificationName:@"MSWebModuleFetchOk" object:obj.mid];
+             [[NSNotificationCenter defaultCenter] postNotificationName:MSWebModuleFetchOk object:obj];
          }
      }];
     
