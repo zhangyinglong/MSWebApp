@@ -33,6 +33,11 @@
      selector:@selector(reloadData)
      name:@"MSWebModuleFetchOk"
      object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:_tableView
+     selector:@selector(reloadData)
+     name:@"MSWebModuleFetchErr"
+     object:nil];
     
     [MSWebApp webApp].fullURL = @"http://192.168.199.173:8080/webapp.json";
     [MSWebApp startWithType:@"MEC"];

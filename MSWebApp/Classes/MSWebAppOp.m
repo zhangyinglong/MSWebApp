@@ -51,22 +51,20 @@
      handler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
          if ( !error ) {
              // Unzip
-             // NSLog(@"模块: %@ 下载成功, 开始解压", _mid);
              NSString * fp = [[MSWebAppUtil getLocalCachePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.zip", self.mid]];
              [WPZipArchive unzipFileAtPath:fp toDestination:[MSWebAppUtil getLocalCachePath] progressHandler:^(NSString *entry, unz_file_info zipInfo, long entryNumber, long total) {
                  
              } completionHandler:^(NSString *path, BOOL succeeded, NSError *error) {
                  if ( succeeded ) {
-                     // NSLog(@"<%@> 解压成功", self.mid);
                      [[NSFileManager defaultManager] removeItemAtPath:fp error:nil];
                      weakSelf.downloaded = YES;
                      [[NSNotificationCenter defaultCenter] postNotificationName:@"MSWebModuleFetchOk" object:weakSelf.mid];
                      [[MSWebApp webApp].op saveToDB];
                  }
-                 // else NSLog(@"<%@> 解压失败: error: %@", self.mid, error.localizedDescription);
+                 else [[NSNotificationCenter defaultCenter] postNotificationName:@"MSWebModuleFetchErr" object:weakSelf.mid];
              }];
          } else {
-             // NSLog(@"模块: %@ 下载失败, 开始解压", _mid);
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"MSWebModuleFetchErr" object:weakSelf.mid];
          }
      } progressHandler:^(CGFloat progress) {
          if ( weakSelf.downloadProgressHandler ) {
