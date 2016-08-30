@@ -7,17 +7,11 @@
 
 ## How to use 如何使用
 
-Config the WebApp for use: 配置WebApp:
-
-step1. 步骤1
+配置WebApp:
 
 ```objective-c
 #import <MSWebApp/MSWebApp.h>
 ```
-
-step2: 步骤2
-
-Set the full url for where can get a config json. webApp will fetch modules in this config.
 
 设置WebApp进行POST网络请求的地址
 
@@ -320,12 +314,12 @@ version: "a4fc6"
 
 参数表单：param
 
-| 参数名称       | 参数类型   | 参数描述      |
-| ---------- | ------ | --------- |
-| mid        | String | 模块ID      |
-| version    | String | 新的Git短版本号 |
-| packageurl | String | 模块下载地址    |
-| urls       | Object | 对应规则      |
+| 参数名称       | 参数类型   | 参数描述       |
+| ---------- | ------ | ---------- |
+| mid        | String | 模块ID       |
+| version    | String | 新的Git短版本号  |
+| packageurl | String | 模块下载地址     |
+| urls       | Object | 对应规则       |
 | sync       | String | 是否同步加载 y/n |
 
 返回值：
@@ -343,13 +337,13 @@ version: "a4fc6"
 
 参数表单：param
 
-| 参数名称       | 参数类型   | 参数描述    |
-| ---------- | ------ | ------- |
-| mid        | String | 子模块唯一标识 |
-| version    | String | 子模块版本   |
-|            |        |         |
-| packageurl | String | 子模块下载地址 |
-| urls       | Object | 映射表     |
+| 参数名称       | 参数类型   | 参数描述       |
+| ---------- | ------ | ---------- |
+| mid        | String | 子模块唯一标识    |
+| version    | String | 子模块版本      |
+|            |        |            |
+| packageurl | String | 子模块下载地址    |
+| urls       | Object | 映射表        |
 | sync       | String | 是否同步加载 y/n |
 
 返回值：
