@@ -43,7 +43,7 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
     
     [[MSWebApp webApp].net
      getWebAppWithHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-         if ( !error || !responseObject ) {
+         if ( error || !responseObject ) {
              [[NSNotificationCenter defaultCenter] postNotificationName:MSWebAppGetOptionFailure object:nil];
          } else {             
              [MSWebApp webApp].op = [[MSWebAppOp alloc] init];
