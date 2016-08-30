@@ -11,6 +11,7 @@
 #import "NSObject+LKDBHelper.h"
 
 NSString MS_CONST MSWebAppGetOptionSuccess = @"MSWebAppGetOptionSuccess";
+NSString MS_CONST MSWebAppGetOptionFailure = @"MSWebAppGetOptionFailure";
 NSString MS_CONST MSWebModuleFetchBegin = @"MSWebModuleFetchBegin";
 NSString MS_CONST MSWebModuleFetchErr = @"MSWebModuleFetchErr";
 NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
@@ -42,17 +43,21 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
     
     [[MSWebApp webApp].net
      getWebAppWithHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-         [MSWebApp webApp].op = [[MSWebAppOp alloc] init];
-         MSWebAppOp * o = [MSWebApp webApp].op;
-         o.version = responseObject[@"app"][@"version"];
-         __block NSMutableArray * arr = [NSMutableArray arrayWithCapacity:1];
-         [responseObject[@"app"][@"module"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * stop) {
-             MSWebAppModule *m = [[MSWebAppModule alloc] init];
-             [m setValuesForKeysWithDictionary:obj];
-             [arr addObject:m];
-         }];
-         o.module = [NSArray arrayWithArray:arr];
-         [MSWebAppUtil handlerOp];
+         if ( !error || !responseObject ) {
+             [[NSNotificationCenter defaultCenter] postNotificationName:MSWebAppGetOptionFailure object:nil];
+         } else {             
+             [MSWebApp webApp].op = [[MSWebAppOp alloc] init];
+             MSWebAppOp * o = [MSWebApp webApp].op;
+             o.version = responseObject[@"app"][@"version"];
+             __block NSMutableArray * arr = [NSMutableArray arrayWithCapacity:1];
+             [responseObject[@"app"][@"module"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * stop) {
+                 MSWebAppModule *m = [[MSWebAppModule alloc] init];
+                 [m setValuesForKeysWithDictionary:obj];
+                 [arr addObject:m];
+             }];
+             o.module = [NSArray arrayWithArray:arr];
+             [MSWebAppUtil handlerOp];
+         }
     }];
     [MSWebAppUtil cleanWebView];
 }
