@@ -48,11 +48,11 @@ UIWebViewDelegate
         [_browser loadHTMLString:@"" baseURL:nil];
         MSWebAppWK(
                    {
-                       _browser.UIDelegate = nil;
+                       _browser.UIDelegate         = nil;
                        _browser.navigationDelegate = nil;
                    },
                    {
-                       _browser.delegate = nil;
+                       _browser.delegate           = nil;
                    });
         [_browser removeFromSuperview];
         _browser = nil;
@@ -131,8 +131,8 @@ UIWebViewDelegate
     MSWebAppWK(
     {
         WKWebViewConfiguration * configuration = [[WKWebViewConfiguration alloc] init];
-        _browser = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
-        _bridge = [WKWebViewJavascriptBridge bridgeForWebView:_browser];
+        _browser                               = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
+        _bridge                                = [WKWebViewJavascriptBridge bridgeForWebView:_browser];
     },
     {
         _browser = [[UIWebView alloc] init];
@@ -143,7 +143,7 @@ UIWebViewDelegate
         
         // Pre loaded.
         NSURLRequest * request;
-        request                     = [NSURLRequest requestWithURL:_URL];
+        request  = [NSURLRequest requestWithURL:_URL];
         
         [_browser setBackgroundColor:[UIColor whiteColor]];
         [_browser loadRequest:request];

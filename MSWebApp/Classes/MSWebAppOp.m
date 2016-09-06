@@ -81,7 +81,8 @@
 
 - (void) unzipWith: (dispatch_source_t) sync_t {
     __weak typeof(self) weakSelf = self;
-    NSString * fp = [[MSWebAppUtil getLocalCachePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.zip", _mid]];
+    NSString * fp                = [[MSWebAppUtil getLocalCachePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.zip", _mid]];
+    
     [WPZipArchive unzipFileAtPath:fp toDestination:[MSWebAppUtil getLocalCachePath] progressHandler:^(NSString *entry, unz_file_info zipInfo, long entryNumber, long total) {
         
     } completionHandler:^(NSString *path, BOOL succeeded, NSError *error) {

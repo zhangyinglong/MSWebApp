@@ -36,7 +36,7 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
 
 + (void) startWithType: (NSString *) type {
     [MSWebApp webApp].net.type = type;
-    MSWebAppOp * oldOp = [MSWebAppOp searchSingleWithWhere:nil orderBy:nil];
+    MSWebAppOp * oldOp         = [MSWebAppOp searchSingleWithWhere:nil orderBy:nil];
     if ( oldOp ) {
         [MSWebApp webApp].net.version = oldOp.version;
     }
@@ -122,8 +122,8 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
 + (void) setAppUserAgent: (NSString *) customUserAgentString {
     @autoreleasepool {
         UIWebView* tempWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
-        NSString* userAgent = [tempWebView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-        NSString *ua = [NSString stringWithFormat:@"%@ %@",
+        NSString* userAgent    = [tempWebView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+        NSString *ua           = [NSString stringWithFormat:@"%@ %@",
                         userAgent,
                         customUserAgentString];
         [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : ua, @"User-Agent" : ua}];

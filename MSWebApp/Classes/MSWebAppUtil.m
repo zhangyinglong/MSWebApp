@@ -15,7 +15,7 @@
 
 + (void) handlerOp {
     // Current Op
-    MSWebAppOp * op = [MSWebApp webApp].op;
+    MSWebAppOp * op    = [MSWebApp webApp].op;
     // Get Old Op, And remove from db.
     MSWebAppOp * oldOp = [MSWebAppOp searchSingleWithWhere:nil orderBy:nil];
     // Post notification
