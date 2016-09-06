@@ -17,8 +17,13 @@
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		E6AF94E49A04CCA97A2D4E8C /* libPods-MSWebApp_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D79016696FFAFB3BD704B29 /* libPods-MSWebApp_Example.a */; };
+		FC2D295C1D7E675F00714B73 /* MS_404_title.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC2D29591D7E675F00714B73 /* MS_404_title.jpg */; };
+		FC2D295D1D7E675F00714B73 /* MS_404.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC2D295A1D7E675F00714B73 /* MS_404.jpg */; };
+		FC2D295E1D7E675F00714B73 /* MSWeb_404.htm in Resources */ = {isa = PBXBuildFile; fileRef = FC2D295B1D7E675F00714B73 /* MSWeb_404.htm */; };
 		FC7728431D6FD06200885BA3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC7728421D6FD06200885BA3 /* Launch Screen.storyboard */; };
 		FC7728561D7037EB00885BA3 /* MMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7728551D7037EB00885BA3 /* MMTableViewCell.m */; };
+		FCA139E71D7E67A90070037E /* MSubWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA139E61D7E67A90070037E /* MSubWebViewController.m */; };
+		FCA139E91D7E6AD80070037E /* back_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA139E81D7E6AD80070037E /* back_black@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,9 +51,15 @@
 		8812EC7219AEE2B7BB9ED004 /* MSWebApp.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MSWebApp.podspec; path = ../MSWebApp.podspec; sourceTree = "<group>"; };
 		AFBCECE0EC0E940EB7D1F3B7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F88F161675728B5BF9128DAC /* libPods-MSWebApp_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MSWebApp_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC2D29591D7E675F00714B73 /* MS_404_title.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MS_404_title.jpg; sourceTree = "<group>"; };
+		FC2D295A1D7E675F00714B73 /* MS_404.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MS_404.jpg; sourceTree = "<group>"; };
+		FC2D295B1D7E675F00714B73 /* MSWeb_404.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = MSWeb_404.htm; sourceTree = "<group>"; };
 		FC7728421D6FD06200885BA3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FC7728541D7037EB00885BA3 /* MMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableViewCell.h; sourceTree = "<group>"; };
 		FC7728551D7037EB00885BA3 /* MMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableViewCell.m; sourceTree = "<group>"; };
+		FCA139E51D7E67A90070037E /* MSubWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSubWebViewController.h; sourceTree = "<group>"; };
+		FCA139E61D7E67A90070037E /* MSubWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSubWebViewController.m; sourceTree = "<group>"; };
+		FCA139E81D7E6AD80070037E /* back_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_black@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +123,17 @@
 		6003F593195388D20070C39A /* Example for MSWebApp */ = {
 			isa = PBXGroup;
 			children = (
+				FCA139E81D7E6AD80070037E /* back_black@2x.png */,
+				FC2D29591D7E675F00714B73 /* MS_404_title.jpg */,
+				FC2D295A1D7E675F00714B73 /* MS_404.jpg */,
+				FC2D295B1D7E675F00714B73 /* MSWeb_404.htm */,
 				6003F59C195388D20070C39A /* MAppDelegate.h */,
 				6003F59D195388D20070C39A /* MAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* MViewController.h */,
 				6003F5A6195388D20070C39A /* MViewController.m */,
+				FCA139E51D7E67A90070037E /* MSubWebViewController.h */,
+				FCA139E61D7E67A90070037E /* MSubWebViewController.m */,
 				FC7728541D7037EB00885BA3 /* MMTableViewCell.h */,
 				FC7728551D7037EB00885BA3 /* MMTableViewCell.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
@@ -204,8 +221,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC2D295D1D7E675F00714B73 /* MS_404.jpg in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				FC2D295C1D7E675F00714B73 /* MS_404_title.jpg in Resources */,
+				FCA139E91D7E6AD80070037E /* back_black@2x.png in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				FC2D295E1D7E675F00714B73 /* MSWeb_404.htm in Resources */,
 				FC7728431D6FD06200885BA3 /* Launch Screen.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -270,6 +291,7 @@
 				FC7728561D7037EB00885BA3 /* MMTableViewCell.m in Sources */,
 				6003F5A7195388D20070C39A /* MViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				FCA139E71D7E67A90070037E /* MSubWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

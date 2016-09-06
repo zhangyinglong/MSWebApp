@@ -33,12 +33,12 @@ Try it.
 
   s.source_files = 'MSWebApp/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'MSWebApp' => ['MSWebApp/Assets/*.png']
-  # }
+# s.resource_bundles = {
+#  'MSWebApp' => ['MSWebApp/Assets/*.jpg', 'MSWebApp/Assets/*.htm']
+# }
 
   s.public_header_files = 'MSWebApp/Classes/**/*.h'
-  s.frameworks = 'UIKit', 'Foundation'
+  s.frameworks = 'UIKit', 'Foundation', 'WebKit'
   s.dependency 'AFNetworking'
   s.dependency 'WebViewJavascriptBridge'
   s.dependency 'LKDBHelper'

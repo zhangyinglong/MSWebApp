@@ -75,36 +75,40 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
     
     // http://um.devdylan.com/mainModule/enter.tpl?a=b&b=c
     if ( ![URL.host isEqualToString:[NSURL URLWithString:[MSWebApp webApp].fullURL].host] ) {
-        return [[MSWebViewController alloc] initWithURLs:string];
+        return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:string];
     }
     
     // Validate path
+    if ( !URL.path || URL.path.length <= 1) {
+        return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:string];
+    }
+    
     NSArray * paths = [[URL.path substringFromIndex:1] componentsSeparatedByString:@"/"];
     if ( paths.count != 2 ) {
-        return [[MSWebViewController alloc] initWithURLs:string];
+        return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:string];
     }
     
     // Validated tpl rule.
     if ( ![paths[1] hasSuffix:@".tpl"] ) {
-        return [[MSWebViewController alloc] initWithURLs:string];
+        return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:string];
     }
     
     // Validated module
     NSString * mid = paths[0];
     MSWebAppModule * module = [MSWebApp webApp].op.moduleMap[mid];
     if ( !module ) {
-        return [[MSWebViewController alloc] initWithURLs:string];
+        return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:string];
     }
     
     // Validated download state.
     if ( !module.downloaded ) {
         [module get];
-        return [[MSWebViewController alloc] initWithURLs:string];
+        return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:string];
     }
     
     // Validated urls, 可能是配置文件模块, 不需要访问
     if ( !module.urls || !module.urls[paths[1]]) {
-        return [[MSWebViewController alloc] initWithURLs:string];
+        return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:string];
     }
     
     NSString * urlWithoutQuery = [[module getCachedPath] stringByAppendingPathComponent:module.urls[paths[1]]];
@@ -112,12 +116,7 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
     [NSString stringWithFormat:@"%@?%@", [[module getCachedPath] stringByAppendingPathComponent:module.urls[paths[1]]], URL.query?: @"query=none" ];
     
     realURL = [NSURL fileURLWithPath:realPath];
-    
-    if ( [[MSWebApp webApp].registedClass isSubclassOfClass:[MSWebViewController class]] ) {
-        return [[[MSWebApp webApp].registedClass alloc] initWithURLs:realURL.absoluteString];
-    } else {
-        return [[MSWebViewController alloc] initWithURLs:realURL.absoluteString];
-    }
+    return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:realURL.absoluteString];
 }
 
 + (void) setAppUserAgent: (NSString *) customUserAgentString {
@@ -131,10 +130,14 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
     }
 }
 
-- (Class) registedClass {
+- (Class) getRegistedClass {
     if ( !_registedClass ) {
         return [MSWebViewController class];
     }
+    if ( ![_registedClass isSubclassOfClass:[MSWebViewController class]] ) {
+        return [MSWebViewController class];
+    }
+    return _registedClass;
 }
 
 @end

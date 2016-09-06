@@ -8,7 +8,13 @@
 
 #import "MSWebViewController.h"
 
-@interface MSWebViewController () <UIWebViewDelegate>
+@interface MSWebViewController () <
+#if defined (kMSWebAppSupportWKWebView)
+WKUIDelegate, WKNavigationDelegate
+#else
+UIWebViewDelegate
+#endif
+>
 
 @property ( nonatomic, strong ) NSURL * URL;
 
@@ -20,8 +26,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view addSubview:_browser];
+    
     self.view.backgroundColor = [UIColor whiteColor];
-    _browser.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
@@ -40,7 +46,14 @@
 - (void) dealloc {
     if ( _browser ) {
         [_browser loadHTMLString:@"" baseURL:nil];
-        _browser.delegate = nil;
+        MSWebAppWK(
+                   {
+                       _browser.UIDelegate = nil;
+                       _browser.navigationDelegate = nil;
+                   },
+                   {
+                       _browser.delegate = nil;
+                   });
         [_browser removeFromSuperview];
         _browser = nil;
     }
@@ -49,8 +62,35 @@
 
 #pragma mark -
 
-- (void) webViewDidStartLoad: (UIWebView *) webView {
+#if defined (kMSWebAppSupportWKWebView)
+
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    [self startLoad];
+}
+
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
     
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    __weak typeof(self) weakself = self;
+    [_browser evaluateJavaScript:@"document.title" completionHandler:^(id object, NSError * error) {
+        if ( !error ) {
+            weakself.title = [NSString stringWithFormat:@"%@", object];
+        }
+    }];
+    [self finishLoad];
+}
+
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    // When load failure, auto load 404 page.
+    [self load404: @""];
+}
+
+#else
+
+- (void) webViewDidStartLoad: (UIWebView *) webView {
+    [self startLoad];
 }
 
 - (BOOL) webView: (UIWebView *) webView shouldStartLoadWithRequest: (NSURLRequest *) request
@@ -60,15 +100,44 @@
 
 - (void) webViewDidFinishLoad: (UIWebView *) webView {
     self.title = [_browser stringByEvaluatingJavaScriptFromString:@"document.title"];
+    [self finishLoad];
 }
 
-#pragma mark - 
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    // When load failure, auto load 404 page.
+    [self load404: @""];
+}
+
+#endif
+
+// Subclass it.
+- (void) load404: (id) content {
+    
+}
+
+- (void) startLoad {
+    
+}
+
+- (void) finishLoad {
+    
+}
+
+#pragma mark -
 
 - (instancetype) initWithURLs: (NSString *) URLs {
     self     = [super init];
     _URL     = [NSURL URLWithString:[URLs stringByRemovingPercentEncoding]];
-    _browser = [[UIWebView alloc] init];
-    _bridge  = [WebViewJavascriptBridge bridgeForWebView:_browser];
+    MSWebAppWK(
+    {
+        WKWebViewConfiguration * configuration = [[WKWebViewConfiguration alloc] init];
+        _browser = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
+        _bridge = [WKWebViewJavascriptBridge bridgeForWebView:_browser];
+    },
+    {
+        _browser = [[UIWebView alloc] init];
+        _bridge  = [WebViewJavascriptBridge bridgeForWebView:_browser];
+    });
     if ( self ) {
         [_bridge setWebViewDelegate:self];
         
@@ -76,15 +145,22 @@
         NSURLRequest * request;
         request                     = [NSURLRequest requestWithURL:_URL];
         
+        [_browser setBackgroundColor:[UIColor whiteColor]];
         [_browser loadRequest:request];
     }
     return self;
 }
 
-#pragma mark - 
+#pragma mark -
 
 + (void) enableLogging {
-    [WebViewJavascriptBridge enableLogging];
+    MSWebAppWK(
+    {
+        [WKWebViewJavascriptBridge enableLogging];
+    },
+    {
+        [WebViewJavascriptBridge enableLogging];
+    });
 }
 
 - (void) registerHandler: (NSString*) handlerName handler: (WVJBHandler) handler {
@@ -110,15 +186,5 @@
         [_bridge callHandler:handlerName data:data responseCallback:responseCallback];
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

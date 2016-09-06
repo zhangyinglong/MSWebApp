@@ -8,6 +8,8 @@
 
 #import "MViewController.h"
 #import "MMTableViewCell.h"
+#import "MSubWebViewController.h"
+
 #import <MSWebApp/MSWebApp.h>
 
 @interface MViewController () <UITableViewDelegate, UITableViewDataSource> {
@@ -48,6 +50,8 @@
     
     [MSWebApp webApp].fullURL = @"http://192.168.199.173:8080/webapp.json";
     [MSWebApp startWithType:@"MEC"];
+    
+    [MSWebApp webApp].registedClass = [MSubWebViewController class];
 }
 
 - (void) newModuleProcressed: (NSNotification *) notification {

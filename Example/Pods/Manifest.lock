@@ -19,7 +19,7 @@ PODS:
   - FMDB/standard (2.6.2)
   - LKDBHelper (2.3.4):
     - FMDB
-  - MSWebApp (0.2.0):
+  - MSWebApp (0.8.0):
     - AFNetworking
     - LKDBHelper
     - WebViewJavascriptBridge
@@ -38,7 +38,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   LKDBHelper: 21fed3d2a010ea6f97996490abd717d379f9c772
-  MSWebApp: 15d320ff87937bb5493502dcb11af8299fca05df
+  MSWebApp: 6e4a5aafbbd7464cb22dc00d2287a2ce706730ab
   WebViewJavascriptBridge: a4d502315f1b8d9a51cd6a9174147ed567ec3bc5
   WPZipArchive: 3a31c553e4c0d6225ae6661b20d189366d19c79f
 

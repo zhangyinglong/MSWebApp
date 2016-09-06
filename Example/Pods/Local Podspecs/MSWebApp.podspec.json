@@ -1,6 +1,6 @@
 {
   "name": "MSWebApp",
-  "version": "0.2.0",
+  "version": "0.8.0",
   "summary": "A Local cached webView.",
   "description": "Local Cached webView, eazy config, cached the website to your iPhone local folder, for fast visit.\nTry it.",
   "homepage": "https://github.com/WildDylan/MSWebApp",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/WildDylan/MSWebApp.git",
-    "tag": "0.2.0"
+    "tag": "0.8.0"
   },
   "platforms": {
     "ios": "7.0"
@@ -22,7 +22,8 @@
   "public_header_files": "MSWebApp/Classes/**/*.h",
   "frameworks": [
     "UIKit",
-    "Foundation"
+    "Foundation",
+    "WebKit"
   ],
   "dependencies": {
     "AFNetworking": [
