@@ -9,7 +9,7 @@ What's `MSWebApp`: More and more html/html5 show in native apps, learn react-nat
 
 MSWebApp provide an webViewController with JavaScript bridge, auto check server modules and download it, match local file URL with origin URL, custom your webView with basic web container. But it's not enough, i will do something better, like: LRU with resources, auto checkout image resources with URLProtocol, in memory caches.
 
-Functions:
+Functions And futures:
 
 - [x] WKWebView/UIWebView support.
 - [x] WebView-JavaScript bridge support.
