@@ -38,7 +38,7 @@ And then, in your appDelegate or where you want to load it:
 [MSWebApp startWithType:@"MEC"];
 ```
 
-This is the demo response object for `[MSWebApp webApp].fullURL`, `MSWebApp Framework`will POST to this URL, so your server response shuold like it. This response object only for `Version <= 1.0`, future, will add properties to every module.
+This is the demo response object for `[MSWebApp webApp].fullURL`, `MSWebApp Framework`will POST to this URL, so your server response shuold like this. This response object only for `Version <= 1.0`, future, will add properties to every module.
 
 server API response:
 
@@ -197,7 +197,7 @@ version: "a4fc6"
 
 Future:
 
-- [ ] Checkout CRC for files, Add file list to config.
+- [ ] Check CRC for every file, Add file list to config.
 
 ## html5 coding
 
