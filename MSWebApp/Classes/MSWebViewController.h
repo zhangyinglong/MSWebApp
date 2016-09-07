@@ -51,7 +51,7 @@
 - (void) callHandler: (NSString*) handlerName data: (id) data;
 - (void) callHandler: (NSString*) handlerName data: (id) data responseCallback: (WVJBResponseCallback) responseCallback;
 
-#pragma mark - SubClassing methods.
+#pragma mark - SubClassing override methods.
 
 - (void) load404: (id) content;
 - (void) startLoad;

@@ -29,17 +29,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - override methods.
+
 - (void) load404: (id) content {
     NSURL * u = [[NSBundle mainBundle] URLForResource:@"MSWeb_404" withExtension:@"htm"];
     [self.browser loadRequest:[NSURLRequest requestWithURL:u]];
 }
 
 - (void) startLoad {
-    NSLog(@"开始加载");
+    NSLog(@"Begin loading");
 }
 
 - (void) finishLoad {
-    NSLog(@"加载结束");
+    NSLog(@"End loading");
 }
 
 /*

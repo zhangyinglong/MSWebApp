@@ -32,6 +32,9 @@
     usePresentWebApp = NO;
     _dataDict       = [NSMutableDictionary dictionaryWithCapacity:1];
     
+    /**
+     Add observer to self.
+     */
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(newModuleProcressed:)
@@ -47,25 +50,32 @@
      selector:@selector(newModuleProcressed:)
      name:MSWebModuleFetchBegin
      object:nil];
-    
+    /**
+     Set config request URL.
+     */
     [MSWebApp webApp].fullURL = @"http://192.168.199.173:8080/webapp.json";
+    
+    /**
+     Start MSWebApp, start request config API, download, zip modules.
+     */
     [MSWebApp startWithType:@"MEC"];
     
+    /**
+     Set custom WebViewController, MSubWebViewController is subClass of MSWebViewController.
+     */
     [MSWebApp webApp].registedClass = [MSubWebViewController class];
 }
 
 - (void) newModuleProcressed: (NSNotification *) notification {
+    // Get current moduel from notification.objecy
     MSWebAppModule * module = notification.object;
     [_dataDict setObject:module forKey:module.mid];
     if ( [notification.name isEqualToString:MSWebModuleFetchOk] ) {
-        // 模块加载成功
-        module.desc = @"加载成功";
+        module.desc = @"Loaded success";
     } else if ( [notification.name isEqualToString:MSWebModuleFetchErr] ) {
-        // 模块加载失败
-        module.desc = @"加载失败";
+        module.desc = @"Loaded failure";
     } else {
-        // 模块开始加载
-        module.desc = @"加载中...";
+        module.desc = @"loading ...";
     }
     [_tableView reloadData];
 }

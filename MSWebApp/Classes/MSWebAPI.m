@@ -13,9 +13,11 @@
 
 - (instancetype) init {
     self = [super init];
+    // Ignore local cached data configuration.
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     configuration.requestCachePolicy         = NSURLRequestReloadIgnoringLocalCacheData;
     _wapi                                    = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    // Default use JSONResponseSerializer
     _wapi.responseSerializer                 = [AFJSONResponseSerializer serializer];
     if ( self ) {
         
@@ -27,7 +29,7 @@
     NSMutableURLRequest *buildingRequest;
     id                   param;
     NSError             *error;
-    
+    // Value check
     param = @{
               
               @"app"    : _type ?: @"",
@@ -39,6 +41,11 @@
                        requestWithMethod:@"POST"
                        URLString:[MSWebApp webApp].fullURL
                        parameters:param error:&error];
+    // Build request with error.
+    if ( error ) {
+        handler(nil, nil, error);
+        return nil;
+    }
     NSURLSessionDataTask * dataTask =
     [_wapi
      dataTaskWithRequest:buildingRequest
@@ -60,6 +67,11 @@
                        requestWithMethod:@"GET"
                        URLString:packageURL
                        parameters:param error:&error];
+    // Build request with error.
+    if ( error ) {
+        handler(nil, nil, error);
+        return nil;
+    }
     NSURLSessionDownloadTask * downloadTask =
     [_wapi
      downloadTaskWithRequest:buildingRequest

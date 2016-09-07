@@ -23,7 +23,7 @@ Functions And futures:
 ## How to use
 
 ```ruby
-pod "MSWebApp", "~> 0.9.0"
+pod "MSWebApp", "~> 1.0.0"
 
 #import <MSWebApp/MSWebApp.h>
 ```
@@ -93,11 +93,16 @@ Also, after start webApp, you can use KVO to observe the config and module loadi
 The state you can get: 
 
 ```objective-c
-FOUNDATION_EXTERN NSString MS_CONST MSWebAppGetOptionSuccess; // Get config and handler success.
-FOUNDATION_EXTERN NSString MS_CONST MSWebAppGetOptionFailure; // Get config wiht failure.
-FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchBegin;	  // Start fetch Module.
-FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchErr;	  // Module download or unzip with error.
-FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchOk;		  // Module downloaded and unziped. 
+/** POST on config get success, notification.object is `MSWebAppOp`*/
+FOUNDATION_EXTERN NSString MS_CONST MSWebAppGetOptionSuccess;
+/** POST on config get with error, notification.object is `NSError` or nil*/
+FOUNDATION_EXTERN NSString MS_CONST MSWebAppGetOptionFailure;
+/** POST on module start download, notification.object is `MSWebAppModule`*/
+FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchBegin;
+/** POST on module downloaded or ziped with error, notification.object is `MSWebAppModule`*/
+FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchErr;
+/** POST on module handler OK, notification.object is `MSWebAppModule`*/
+FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchOk; 
 ```
 
 Now, hypothesis the module loaded complete. Open webView.
@@ -142,7 +147,7 @@ Why the host of URL shoule same as [MSWebApp webApp].fullURL.host, because i sug
 
 ## WebApp version info
 
-Now, the 0.9.0 version can be used normally.
+Now, the 1.0.0 version can be used normally.
 
 MSWebApp denpendences：
 

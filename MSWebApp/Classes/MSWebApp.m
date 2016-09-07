@@ -40,11 +40,13 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
     if ( oldOp ) {
         [MSWebApp webApp].net.version = oldOp.version;
     }
-    
+    /**
+     Future: Moving request to utils.
+     */
     [[MSWebApp webApp].net
      getWebAppWithHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
          if ( error || !responseObject ) {
-             [[NSNotificationCenter defaultCenter] postNotificationName:MSWebAppGetOptionFailure object:nil];
+             [[NSNotificationCenter defaultCenter] postNotificationName:MSWebAppGetOptionFailure object:error];
          } else {             
              [MSWebApp webApp].op = [[MSWebAppOp alloc] init];
              MSWebAppOp * o = [MSWebApp webApp].op;
@@ -106,7 +108,7 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
         return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:string];
     }
     
-    // Validated urls, 可能是配置文件模块, 不需要访问
+    // Validated urls
     if ( !module.urls || !module.urls[paths[1]]) {
         return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:string];
     }

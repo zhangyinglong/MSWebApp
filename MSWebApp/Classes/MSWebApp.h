@@ -15,10 +15,15 @@
 #undef  MS_CONST
 #define MS_CONST *const
 
+/** POST on config get success, notification.object is `MSWebAppOp`*/
 FOUNDATION_EXTERN NSString MS_CONST MSWebAppGetOptionSuccess;
+/** POST on config get with error, notification.object is `NSError` or nil*/
 FOUNDATION_EXTERN NSString MS_CONST MSWebAppGetOptionFailure;
+/** POST on module start download, notification.object is `MSWebAppModule`*/
 FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchBegin;
+/** POST on module downloaded or ziped with error, notification.object is `MSWebAppModule`*/
 FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchErr;
+/** POST on module handler OK, notification.object is `MSWebAppModule`*/
 FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchOk;
 
 /**
