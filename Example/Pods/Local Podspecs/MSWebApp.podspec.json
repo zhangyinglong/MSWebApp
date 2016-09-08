@@ -1,7 +1,7 @@
 {
   "name": "MSWebApp",
-  "version": "0.8.0",
-  "summary": "A Local cached webView.",
+  "version": "1.0.0",
+  "summary": "A Local cached webView, Support UIWebView/WKWebView. Auto loaded modules from server and `mount` to App",
   "description": "Local Cached webView, eazy config, cached the website to your iPhone local folder, for fast visit.\nTry it.",
   "homepage": "https://github.com/WildDylan/MSWebApp",
   "license": {
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/WildDylan/MSWebApp.git",
-    "tag": "0.8.0"
+    "tag": "1.0.0"
   },
   "platforms": {
     "ios": "7.0"

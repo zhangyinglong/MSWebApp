@@ -116,7 +116,7 @@ UIWebViewDelegate
 }
 
 - (void) startLoad {
-    
+    MSLog(@"Loading: %@", _URL);
 }
 
 - (void) finishLoad {
@@ -142,8 +142,9 @@ UIWebViewDelegate
         [_bridge setWebViewDelegate:self];
         
         // Pre loaded.
-        NSURLRequest * request;
-        request  = [NSURLRequest requestWithURL:_URL];
+        NSMutableURLRequest * request;
+        request  = [NSMutableURLRequest requestWithURL:_URL];
+        
         
         [_browser setBackgroundColor:[UIColor whiteColor]];
         [_browser loadRequest:request];

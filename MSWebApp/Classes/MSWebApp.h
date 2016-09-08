@@ -1,31 +1,16 @@
-//
-//  MSWebApp.h
-//  Pods
-//
-//  Created by Dylan on 2016/8/25.
-//
-//
+/*       ___         __  ___  _   ___  ___
+  /| /| /___ | /| / /_  /__/ /_| /__/ /__/
+ / |/ | ___/ |/ |/ /__ /__/ /  |/    /
+ */
 
 #import <Foundation/Foundation.h>
 #import "WebViewJavascriptBridgeBase.h"
 #import "MSWebViewController.h"
 #import "MSWebAPI.h"
 #import "MSWebAppOp.h"
+#import "MSWebAppUtil.h"
 
-#undef  MS_CONST
-#define MS_CONST *const
-
-/** POST on config get success, notification.object is `MSWebAppOp`*/
-FOUNDATION_EXTERN NSString MS_CONST MSWebAppGetOptionSuccess;
-/** POST on config get with error, notification.object is `NSError` or nil*/
-FOUNDATION_EXTERN NSString MS_CONST MSWebAppGetOptionFailure;
-/** POST on module start download, notification.object is `MSWebAppModule`*/
-FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchBegin;
-/** POST on module downloaded or ziped with error, notification.object is `MSWebAppModule`*/
-FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchErr;
-/** POST on module handler OK, notification.object is `MSWebAppModule`*/
-FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchOk;
-
+@class MSWebViewController;
 /**
  MSWebApp: Hybrid framework, for local html5.zip updated dynamic.
  */
@@ -75,6 +60,16 @@ FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchOk;
  Regist webView subClass for use.
  */
 @property ( nonatomic ) Class registedClass;
+
+/**
+ Enable logging use `NSLog` or `printf`.
+ */
++ (void) enableLogging;
+
+/**
+ Get logging state.
+ */
+@property ( nonatomic, readonly, assign ) BOOL logging;
 
 @end
 

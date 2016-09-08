@@ -11,6 +11,8 @@
 #import "MSubWebViewController.h"
 
 #import <MSWebApp/MSWebApp.h>
+#import <MSFileBrowserTableViewController.h>
+#import <MSWebAppUtil.h>
 
 @interface MViewController () <UITableViewDelegate, UITableViewDataSource> {
     BOOL usePresentWebApp;
@@ -18,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *urlField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property ( nonatomic, strong ) NSMutableDictionary *dataDict;
 
 @end
@@ -29,27 +32,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    [MSWebApp enableLogging];
+    
     usePresentWebApp = NO;
     _dataDict       = [NSMutableDictionary dictionaryWithCapacity:1];
     
     /**
      Add observer to self.
      */
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(newModuleProcressed:)
-     name:MSWebModuleFetchOk
-     object:nil];
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(newModuleProcressed:)
-     name:MSWebModuleFetchErr
-     object:nil];
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(newModuleProcressed:)
-     name:MSWebModuleFetchBegin
-     object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newModuleProcressed:) name:MSWebModuleFetchOk object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newModuleProcressed:) name:MSWebModuleFetchErr object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newModuleProcressed:) name:MSWebModuleFetchBegin object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(progressChanged:) name:MSWebModuleFetchProgress object:nil];
     /**
      Set config request URL.
      */
@@ -71,12 +65,19 @@
     MSWebAppModule * module = notification.object;
     [_dataDict setObject:module forKey:module.mid];
     if ( [notification.name isEqualToString:MSWebModuleFetchOk] ) {
-        module.desc = @"Loaded success";
+        module.desc = @"success";
     } else if ( [notification.name isEqualToString:MSWebModuleFetchErr] ) {
-        module.desc = @"Loaded failure";
+        module.desc = @"failure";
     } else {
-        module.desc = @"loading ...";
+        module.desc = @"loading";
     }
+    [_tableView reloadData];
+}
+
+- (void) progressChanged: (NSNotification *) notification {
+    // Handler
+    MSWebAppModule * module = notification.object;
+    [_dataDict setObject:module forKey:module.mid];
     [_tableView reloadData];
 }
 
@@ -94,6 +95,8 @@
     MSWebAppModule * module = _dataDict[_dataDict.allKeys[indexPath.row]];
     cell.mLabel.text = module.mid;
     cell.vLabel.text = module.desc;
+    cell.progressBar.progress = module.mountProgress;
+    cell.progressLabel.text = [NSString stringWithFormat:@"%.2f%%", module.mountProgress * 100];
     
     return cell;
 }
@@ -114,6 +117,11 @@
     } else {
         usePresentWebApp = NO;
     }
+}
+
+- (IBAction)openFileBrowser:(UIBarButtonItem *)sender {
+    MSFileBrowserTableViewController * browser = [[MSFileBrowserTableViewController alloc] initWithFolderPath:[MSWebAppUtil getLocalCachePath]];
+    [self.navigationController pushViewController:browser animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

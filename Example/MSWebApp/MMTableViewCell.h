@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *mLabel;
 @property (weak, nonatomic) IBOutlet UILabel *vLabel;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
+@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 
 @end

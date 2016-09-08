@@ -1,10 +1,7 @@
-//
-//  MSWebViewController.h
-//  Pods
-//
-//  Created by Dylan on 2016/8/26.
-//
-//
+/*       ___         __  ___  _   ___  ___
+  /| /| /___ | /| / /_  /__/ /_| /__/ /__/
+ / |/ | ___/ |/ |/ /__ /__/ /  |/    /
+ */
 
 #import <UIKit/UIKit.h>
 #import "MSWebAppUtil.h"

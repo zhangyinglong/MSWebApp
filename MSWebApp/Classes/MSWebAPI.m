@@ -8,6 +8,8 @@
 
 #import "MSWebAPI.h"
 #import "MSWebApp.h"
+#import "NSObject+LKDBHelper.h"
+#import "MSURLProtocol.h"
 
 @implementation MSWebAPI
 
@@ -15,6 +17,8 @@
     self = [super init];
     // Ignore local cached data configuration.
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    // Set protocol for this session.
+    configuration.protocolClasses = @[ [MSURLProtocol class] ];
     configuration.requestCachePolicy         = NSURLRequestReloadIgnoringLocalCacheData;
     _wapi                                    = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     // Default use JSONResponseSerializer
@@ -46,6 +50,7 @@
         handler(nil, nil, error);
         return nil;
     }
+    [buildingRequest addValue:MSURLProtocolIdentifier forHTTPHeaderField:kMSWebAppIdentifier];
     NSURLSessionDataTask * dataTask =
     [_wapi
      dataTaskWithRequest:buildingRequest
@@ -72,6 +77,7 @@
         handler(nil, nil, error);
         return nil;
     }
+    [buildingRequest addValue:MSURLProtocolIdentifier forHTTPHeaderField:kMSWebAppIdentifier];
     NSURLSessionDownloadTask * downloadTask =
     [_wapi
      downloadTaskWithRequest:buildingRequest
@@ -82,6 +88,34 @@
     } completionHandler:handler];
     [downloadTask resume];
     return downloadTask;
+}
+
++ (void) startApp {
+    MSWebAppOp * oldOp = [MSWebAppOp searchSingleWithWhere:nil orderBy:nil];
+    if ( oldOp ) {
+        [MSWebApp webApp].net.version = oldOp.version;
+    }
+    /**
+     Future: Moving request to utils.
+     */
+    [[MSWebApp webApp].net
+     getWebAppWithHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+         if ( error || !responseObject ) {
+             [[NSNotificationCenter defaultCenter] postNotificationName:MSWebAppGetOptionFailure object:error];
+         } else {
+             [MSWebApp webApp].op = [[MSWebAppOp alloc] init];
+             MSWebAppOp * o = [MSWebApp webApp].op;
+             o.version = responseObject[@"app"][@"version"];
+             __block NSMutableArray * arr = [NSMutableArray arrayWithCapacity:1];
+             [responseObject[@"app"][@"module"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * stop) {
+                 MSWebAppModule *m = [[MSWebAppModule alloc] init];
+                 [m setValuesForKeysWithDictionary:obj];
+                 [arr addObject:m];
+             }];
+             o.module = [NSArray arrayWithArray:arr];
+             [MSWebAppUtil handlerOp];
+         }
+     }];
 }
 
 @end

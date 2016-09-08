@@ -1,10 +1,7 @@
-//
-//  MSWebAppOp.h
-//  Pods
-//
-//  Created by Dylan on 2016/8/26.
-//
-//
+/*       ___         __  ___  _   ___  ___
+  /| /| /___ | /| / /_  /__/ /_| /__/ /__/
+ / |/ | ___/ |/ |/ /__ /__/ /  |/    /
+ */
 
 #import <Foundation/Foundation.h>
 
@@ -30,6 +27,14 @@
 @end
 
 @interface MSWebAppModule : NSObject
+
+/**
+ Is WebApp download it when load config success.
+ y -> download;
+ n -> do nothing, only save then module object to operation, but when in use, will load it.
+ if you only want to use it when visit, set initdown to n, and sync to y is the best choose.
+ */
+@property ( nonatomic, strong ) NSString *initdown;
 
 /**
  Loaded with sync.
@@ -67,18 +72,30 @@
 - (void) get;
 
 /**
+ Reset module, set downloaded flag to `NO`, reset and reget.
+ */
+- (void) reset;
+
+/**
  Download success.
  */
 @property ( nonatomic, assign ) BOOL downloaded;
 
 /**
- Download progress
+ Progress
  */
-@property ( nonatomic, copy ) void (^downloadProgressHandler)(NSString *mid, CGFloat progress);
+@property ( nonatomic, assign ) CGFloat mountProgress;
 
 /**
  Module desc
  */
 @property ( nonatomic, strong ) NSString * desc;
+
+#pragma mark - private methods
+
+/**
+ Send success notification, used for util.
+ */
+- (void) postLoadedSuccess;
 
 @end

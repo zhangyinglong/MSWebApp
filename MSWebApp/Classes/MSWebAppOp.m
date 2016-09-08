@@ -32,83 +32,131 @@
 
 @end
 
+@interface MSWebAppModule () {
+    
+}
+
+@property ( nonatomic, assign ) BOOL mounting;
+
+@end
+
 @implementation MSWebAppModule
 
 - (NSString *) getCachedPath {
     return [[MSWebAppUtil getLocalCachePath] stringByAppendingPathComponent:self.mid];
 }
 
+- (void) reset {
+    self.downloaded = NO;
+    [self get];
+}
+
+- (void)setDownloaded:(BOOL)downloaded {
+    _downloaded = downloaded;
+    [[MSWebApp webApp].op saveToDB];
+}
+
+- (void)setMountProgress:(CGFloat)mountProgress {
+    _mountProgress = mountProgress;
+    [self postProgress];
+}
+
+- (BOOL) syncDownload {
+    return [self.sync isEqualToString:@"y"];
+}
+
 - (void) get {
-    NSURL       *documentsDirectoryURL;
-    NSURL       *U;
-    dispatch_source_t sync_sources;
+    // Now is downloading the module.
+    if ( _mounting ) {
+        return ;
+    }
+    NSURL             *documentsDirectoryURL;
+    NSURL             *U;
     
     __weak typeof(self) weakSelf = self;
     
     documentsDirectoryURL = [NSURL fileURLWithPath:[MSWebAppUtil getLocalCachePath]];
     U = [documentsDirectoryURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"%@.zip", self.mid]]];
     
-    if ( [_sync isEqualToString:@"y"] ) {
-        sync_sources = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_ADD, 0, 0, dispatch_get_global_queue(0, 0));
-    }
+    // post start download notification.
     [self postStartLoading];
+    // dispatch_source_t control the sync download.
+    if ( [self syncDownload] ) {
+        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:_packageurl]];
+        if ( data ) {
+            NSString *filePath =
+            [[MSWebAppUtil getLocalCachePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.zip", self.mid]];
+            if ( [data writeToFile:filePath atomically:YES] ) {
+                weakSelf.mountProgress = 1 * 0.7;
+                [self unzip];
+                return;
+            }
+        }
+        [weakSelf postLoadedFailure];
+        return;
+    }
+    
+    // async download and zip module.
     [[MSWebApp webApp].net
      getModule:_packageurl
      save2:U
      handler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
          if ( !error ) {
-             [weakSelf unzipWith:sync_sources];
+             MSLog(@"Download success! unzipping mid: %@", weakSelf.mid);
+             [weakSelf unzip];
          } else {
+             MSLog(@"Download failure! mid: %@", weakSelf.mid);
              [weakSelf postLoadedFailure];
-             if ( [weakSelf.sync isEqualToString:@"y"] ) {
-                 dispatch_source_merge_data(sync_sources, 1);
-             }
          }
      } progressHandler:^(CGFloat progress) {
-         if ( weakSelf.downloadProgressHandler ) {
-             weakSelf.downloadProgressHandler(weakSelf.mid, progress);
-         }
+         weakSelf.mountProgress = progress * 0.7;
      }];
-    
-    if ( [_sync isEqualToString:@"y"] ) {
-        dispatch_resume(sync_sources);
-        dispatch_source_set_event_handler(sync_sources, ^{
-            // Handler ~
-            //int value = dispatch_source_get_data(sync_sources);
-        });
-    }
 }
 
-- (void) unzipWith: (dispatch_source_t) sync_t {
+- (void) unzip {
     __weak typeof(self) weakSelf = self;
     NSString * fp                = [[MSWebAppUtil getLocalCachePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.zip", _mid]];
     
-    [WPZipArchive unzipFileAtPath:fp toDestination:[MSWebAppUtil getLocalCachePath] progressHandler:^(NSString *entry, unz_file_info zipInfo, long entryNumber, long total) {
-        
+    [WPZipArchive
+     unzipFileAtPath:fp
+     toDestination:[MSWebAppUtil getLocalCachePath]
+     progressHandler:^(NSString *entry, unz_file_info zipInfo, long entryNumber, long total) {
+         weakSelf.mountProgress = (entryNumber * 1.0 / total) * 0.3 + 0.7;
     } completionHandler:^(NSString *path, BOOL succeeded, NSError *error) {
-        if ( [weakSelf.sync isEqualToString:@"y"] ) {
-            dispatch_source_merge_data(sync_t, 1);
-        }
         if ( succeeded ) {
             [[NSFileManager defaultManager] removeItemAtPath:fp error:nil];
             weakSelf.downloaded = YES;
             [weakSelf postLoadedSuccess];
-            [[MSWebApp webApp].op saveToDB];
         }
-        else [weakSelf postLoadedFailure];
+        else {
+            [weakSelf postLoadedFailure];
+        }
     }];
 }
 
 - (void) postStartLoading {
+    _mounting = YES;
+    self.mountProgress = 0.0;
+    MSLog(@"Begin mount module: %@", _mid);
     [[NSNotificationCenter defaultCenter] postNotificationName:MSWebModuleFetchBegin object:self];
 }
 
 - (void) postLoadedFailure {
+    _mounting = NO;
+    self.mountProgress = 0.0;
+    MSLog(@"Mount failure! mid: %@", _mid);
     [[NSNotificationCenter defaultCenter] postNotificationName:MSWebModuleFetchErr object:self];
 }
 
 - (void) postLoadedSuccess {
+    _mounting = NO;
+    self.mountProgress = 1.0;
+    MSLog(@"Mount module Succeed! mid: %@", _mid);
     [[NSNotificationCenter defaultCenter] postNotificationName:MSWebModuleFetchOk object:self];
+}
+
+- (void) postProgress {
+    [[NSNotificationCenter defaultCenter] postNotificationName:MSWebModuleFetchProgress object:self];
 }
 
 - (void) setValue: (id) value

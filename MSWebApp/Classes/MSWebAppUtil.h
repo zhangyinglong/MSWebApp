@@ -1,23 +1,46 @@
-//
-//  MSWebAppUtil.h
-//  Pods
-//
-//  Created by Dylan on 2016/8/26.
-//
-//
+/*       ___         __  ___  _   ___  ___
+  /| /| /___ | /| / /_  /__/ /_| /__/ /__/
+ / |/ | ___/ |/ |/ /__ /__/ /  |/    /
+ */
 
 #import <Foundation/Foundation.h>
+#import "MSWebApp.h"
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_1
 #undef  kMSWebAppSupportWKWebView
 #define kMSWebAppSupportWKWebView
 #endif
 
+#undef  MSWebAppWK
 #if defined (kMSWebAppSupportWKWebView)
 #define MSWebAppWK( __wk__, __ui__ ) __wk__
 #elif
 #define MSWebAppWK( __wk__, __ui__ ) __ui__
 #endif
+
+#undef  MSLog
+#define MSLog(fmt, ...) if ( [MSWebApp webApp].logging ) NSLog(fmt, ##__VA_ARGS__);
+
+#undef  MS_CONST
+#define MS_CONST *const
+
+#undef  kMSWebAppIdentifier
+#define kMSWebAppIdentifier @"kMSWebAppIdentifier"
+
+/** WITH URLProtocol identifier*/
+FOUNDATION_EXTERN NSString MS_CONST MSURLProtocolIdentifier;
+/** POST on config get success, notification.object is `MSWebAppOp`*/
+FOUNDATION_EXTERN NSString MS_CONST MSWebAppGetOptionSuccess;
+/** POST on config get with error, notification.object is `NSError` or nil*/
+FOUNDATION_EXTERN NSString MS_CONST MSWebAppGetOptionFailure;
+/** POST on module start download, notification.object is `MSWebAppModule`*/
+FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchBegin;
+/** POST on module downloaded or ziped with error, notification.object is `MSWebAppModule`*/
+FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchErr;
+/** POST on module handler OK, notification.object is `MSWebAppModule`*/
+FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchOk;
+/** POST on module mount progress changed*/
+FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchProgress;
 
 @interface MSWebAppUtil : NSObject
 
@@ -40,5 +63,10 @@
  Clean webView.
  */
 + (void) cleanWebView;
+
+/**
+ printf MSWeb App logo.
+ */
++ (void) initialized;
 
 @end

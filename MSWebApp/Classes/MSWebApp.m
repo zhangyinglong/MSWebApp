@@ -8,13 +8,6 @@
 
 #import "MSWebApp.h"
 #import "MSWebAppUtil.h"
-#import "NSObject+LKDBHelper.h"
-
-NSString MS_CONST MSWebAppGetOptionSuccess = @"MSWebAppGetOptionSuccess";
-NSString MS_CONST MSWebAppGetOptionFailure = @"MSWebAppGetOptionFailure";
-NSString MS_CONST MSWebModuleFetchBegin = @"MSWebModuleFetchBegin";
-NSString MS_CONST MSWebModuleFetchErr = @"MSWebModuleFetchErr";
-NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
 
 @interface MSWebApp ()
 
@@ -36,32 +29,7 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
 
 + (void) startWithType: (NSString *) type {
     [MSWebApp webApp].net.type = type;
-    MSWebAppOp * oldOp         = [MSWebAppOp searchSingleWithWhere:nil orderBy:nil];
-    if ( oldOp ) {
-        [MSWebApp webApp].net.version = oldOp.version;
-    }
-    /**
-     Future: Moving request to utils.
-     */
-    [[MSWebApp webApp].net
-     getWebAppWithHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-         if ( error || !responseObject ) {
-             [[NSNotificationCenter defaultCenter] postNotificationName:MSWebAppGetOptionFailure object:error];
-         } else {             
-             [MSWebApp webApp].op = [[MSWebAppOp alloc] init];
-             MSWebAppOp * o = [MSWebApp webApp].op;
-             o.version = responseObject[@"app"][@"version"];
-             __block NSMutableArray * arr = [NSMutableArray arrayWithCapacity:1];
-             [responseObject[@"app"][@"module"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * stop) {
-                 MSWebAppModule *m = [[MSWebAppModule alloc] init];
-                 [m setValuesForKeysWithDictionary:obj];
-                 [arr addObject:m];
-             }];
-             o.module = [NSArray arrayWithArray:arr];
-             [MSWebAppUtil handlerOp];
-         }
-    }];
-    [MSWebAppUtil cleanWebView];
+    [MSWebAppUtil initialized];
 }
 
 + (MSWebViewController *) instanceWithTplURL: (NSString *) string {
@@ -74,8 +42,6 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
     if ( !URL ) {
         return nil;
     }
-    
-    // http://um.devdylan.com/mainModule/enter.tpl?a=b&b=c
     if ( ![URL.host isEqualToString:[NSURL URLWithString:[MSWebApp webApp].fullURL].host] ) {
         return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:string];
     }
@@ -105,7 +71,6 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
     // Validated download state.
     if ( !module.downloaded ) {
         [module get];
-        return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:string];
     }
     
     // Validated urls
@@ -117,6 +82,10 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
     NSString * realPath =
     [NSString stringWithFormat:@"%@?%@", [[module getCachedPath] stringByAppendingPathComponent:module.urls[paths[1]]], URL.query?: @"query=none" ];
     
+    if ( ![[NSFileManager defaultManager] fileExistsAtPath:urlWithoutQuery] ) {
+        // Lose file, reset module download state.
+        [module reset];
+    }
     realURL = [NSURL fileURLWithPath:realPath];
     return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:realURL.absoluteString];
 }
@@ -140,6 +109,10 @@ NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOk";
         return [MSWebViewController class];
     }
     return _registedClass;
+}
+
++ (void) enableLogging {
+    [MSWebApp webApp]->_logging = YES;
 }
 
 @end

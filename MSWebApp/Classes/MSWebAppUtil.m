@@ -10,6 +10,16 @@
 #import "MSWebApp.h"
 #import "MSWebAppOp.h"
 #import "NSObject+LKDBHelper.h"
+#import <sys/utsname.h>
+#import "MSURLProtocol.h"
+
+NSString MS_CONST MSURLProtocolIdentifier = @"MSURLProtocolIdentifierNotificationName";
+NSString MS_CONST MSWebAppGetOptionSuccess = @"MSWebAppGetOptionSuccessNotificationName";
+NSString MS_CONST MSWebAppGetOptionFailure = @"MSWebAppGetOptionFailureNotificationName";
+NSString MS_CONST MSWebModuleFetchBegin = @"MSWebModuleFetchBeginNotificationName";
+NSString MS_CONST MSWebModuleFetchErr = @"MSWebModuleFetchErrNotificationName";
+NSString MS_CONST MSWebModuleFetchOk = @"MSWebModuleFetchOkNotificationName";
+NSString MS_CONST MSWebModuleFetchProgress = @"MSWebModuleFetchProgressNotificationName";
 
 @implementation MSWebAppUtil
 
@@ -50,6 +60,7 @@
              } else {
                  NSString * path = [[MSWebAppUtil getLocalCachePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", obj.mid]];
                  if ( [[NSFileManager defaultManager] fileExistsAtPath:path] ) {
+                     // TODO: file CRC check!
                      newObj.downloaded = YES;
                  }
              }
@@ -62,11 +73,11 @@
 + (void) downloadAll {
     [[MSWebApp webApp].op.module
      enumerateObjectsUsingBlock:^(MSWebAppModule * obj, NSUInteger idx, BOOL * stop) {
-         if ( !obj.downloaded ) {
-             [obj get];
-         } else {
-             [[NSNotificationCenter defaultCenter] postNotificationName:MSWebModuleFetchOk object:obj];
-         }
+         obj.downloaded? [obj postLoadedSuccess]: ({
+             // Download it when config handled success.
+             if ( [obj.initdown isEqualToString:@"y"] )
+                 [obj get];
+         });
      }];
     
     [[MSWebApp webApp].op saveToDB];
@@ -75,6 +86,7 @@
 + (NSString *) getLocalCachePath {
     NSString * rootURL = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:@"mswebapp/"];
     if ( ![[NSFileManager defaultManager] fileExistsAtPath:rootURL] ) {
+        MSLog(@"Create local root folder!, first use it.%@", @"");
         [[NSFileManager defaultManager] createDirectoryAtPath:rootURL withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
@@ -83,11 +95,13 @@
 
 + (void) cleanLocalCache {
     NSError * error = nil;
+    MSLog(@"Clean local root folder%@", @"");
     [[NSFileManager defaultManager] removeItemAtPath:[MSWebAppUtil getLocalCachePath] error:&error];
 }
 
 + (void) cleanLocalModule: (NSString *) mid {
     NSError * error = nil;
+    MSLog(@"Clean local module: %@", mid);
     [[NSFileManager defaultManager] removeItemAtPath:[[self getLocalCachePath] stringByAppendingPathComponent:mid] error:&error];
 }
 
@@ -96,6 +110,22 @@
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"WebKitDiskImageCacheEnabled"];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"WebKitOfflineWebApplicationCacheEnabled"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void) initialized {
+    /**
+     Create And print local cache folder.
+     */
+    NSString * localRootCachePath = [self getLocalCachePath];
+    MSLog(@"\nWebApp Local root: %@", localRootCachePath);
+    /**
+     Start get config
+     */
+    [MSWebAPI startApp];
+    /**
+     Little help for `UIWebView` memory leak
+     */
+    [MSWebAppUtil cleanWebView];
 }
 
 @end

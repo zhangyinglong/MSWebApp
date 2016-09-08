@@ -7,7 +7,7 @@
 
 What's `MSWebApp`: More and more html/html5 show in native apps, learn react-native, weex, and other web app framework will waste a lot of times, also, we only need some dynamic pages use html for show. `MSWebApp`is used for this!
 
-MSWebApp provide an webViewController with JavaScript bridge, auto check server modules and download it, match local file URL with origin URL, custom your webView with basic web container. But it's not enough, i will do something better, like: LRU with resources, auto checkout image resources with URLProtocol, in memory caches.
+MSWebApp provide an webViewController with JavaScript bridge, auto check server modules and download it, match local file URL with origin URL, custom your webView with basic web container. But it's not enough, i will do something better, like: LRU with resources, auto check image resources with `MSURLProtocol`, cached with `SDWebImage`, in memory caches.
 
 Functions And futures:
 
@@ -16,14 +16,17 @@ Functions And futures:
 - [x] Auto check and download modules.
 - [x] Custom webViewController. (subClass it).
 - [x] Auto check URL, load from local or server.
+- [x] Module download progress and do or not download when get config success. sync download.
+- [x] Auto download module, now use but not download yet.
+- [x] simple FileBrowser, use `MSFileBrowserTableViewController`, don't delete html resources files like `css`、`js`, the 1.0.1 version havn't check html resource files, i will do it in next versions.
 - [ ] LRU, resources in memory cached control
 - [ ] URLProtocol
-- [ ] Cache control, Disk cache -> inMemory cache -> webView cache.
+- [ ] Cache control, Disk cache to inMemory cache and webView cache.
 
 ## How to use
 
 ```ruby
-pod "MSWebApp", "~> 1.0.0"
+pod "MSWebApp", "~> 1.0.1"
 
 #import <MSWebApp/MSWebApp.h>
 ```
@@ -55,7 +58,8 @@ server API response:
                                     "enter.tpl" = "index.html";
                                 };
                                 version = ib42;
-                                sync = "n"
+                                sync = "n",
+                                initdown = "y"
                             },
                             {
                                 mid = bootstrap;
@@ -63,7 +67,8 @@ server API response:
                                 urls =                 {
                                 };
                                 version = ib43;
-                                sync = "n"
+                                sync = "n",
+                                initdown = "y"
                             },
                             {
                                 mid = vueModule;
@@ -72,7 +77,8 @@ server API response:
                                     "enter.tpl" = "index.html";
                                 };
                                 version = "3.4.6";
-                                sync = "n"
+                                sync = "y",
+                                "initdown" = "n"
                             }
                         );
         version = "3.3.4";
@@ -103,6 +109,8 @@ FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchBegin;
 FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchErr;
 /** POST on module handler OK, notification.object is `MSWebAppModule`*/
 FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchOk; 
+/** POST on module mount progress changed*/
+FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchProgress;
 ```
 
 Now, hypothesis the module loaded complete. Open webView.
@@ -122,6 +130,7 @@ explain the URL for get webView Controller instance：
 http://{[MSWebApp webApp].fullURL.host}/{ModuleId}/{URLsKey}?{query}
 
 URLsKey，it's a map in config response，get absolute path with something lik `id`.
+>Notice: URLs Map key, should have suffix `.tpl`!
 
 ```
 {
@@ -131,7 +140,8 @@ URLsKey，it's a map in config response，get absolute path with something lik `
                                     "enter.tpl" = "index.html";
                                 };
                                 version = "3.4.6";
-                                sync = "n"
+                                sync = "n",
+                                initdown = "y"
 }
 ```
 
@@ -147,7 +157,7 @@ Why the host of URL shoule same as [MSWebApp webApp].fullURL.host, because i sug
 
 ## WebApp version info
 
-Now, the 1.0.0 version can be used normally.
+Now, the 1.0.1 version can be used normally.
 
 MSWebApp denpendences：
 
@@ -246,6 +256,7 @@ param list:
 | packageurl | String | module zip download url                  |
 | urls       | Object | key:value id:absolute path               |
 | sync       | String | sync load y/n                            |
+| initdown   | String | y: download when get config success. n: not download it. |
 
 response：
 

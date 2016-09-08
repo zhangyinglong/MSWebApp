@@ -1,10 +1,7 @@
-//
-//  MSWebAPI.h
-//  Pods
-//
-//  Created by Dylan on 2016/8/26.
-//
-//
+/*       ___         __  ___  _   ___  ___
+  /| /| /___ | /| / /_  /__/ /_| /__/ /__/
+ / |/ | ___/ |/ |/ /__ /__/ /  |/    /
+ */
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
@@ -38,5 +35,11 @@
                                    save2: (NSURL *) url
                                  handler: (void (^)(NSURLResponse *response, NSURL * filePath, NSError * error))handler
                          progressHandler: (void (^)(CGFloat progress)) progressHandler;
+
+#pragma mark - 
+/**
+ Request config API.
+ */
++ (void) startApp;
 
 @end
