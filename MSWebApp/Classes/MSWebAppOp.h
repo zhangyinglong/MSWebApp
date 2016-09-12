@@ -62,6 +62,12 @@
 @property ( nonatomic, strong ) NSDictionary <NSString *, NSString *> *urls;
 
 /**
+ Module file map,
+ File absolute path : File remote path, Now, it's simply.
+ */
+@property ( nonatomic, strong ) NSDictionary <NSString *, NSString *> *files;
+
+/**
  Get local cached Path.
  */
 - (NSString *) getCachedPath;

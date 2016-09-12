@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MSWebApp'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'A Local cached webView, Support UIWebView/WKWebView. Auto loaded modules from server and `mount` to App'
 
 # This description is used to generate tags and improve search results.

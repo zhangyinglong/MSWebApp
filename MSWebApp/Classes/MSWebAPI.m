@@ -20,9 +20,14 @@
     // Set protocol for this session.
     configuration.protocolClasses = @[ [MSURLProtocol class] ];
     configuration.requestCachePolicy         = NSURLRequestReloadIgnoringLocalCacheData;
+    
+    // Web api initialized, Default use JSONResponseSerializer
     _wapi                                    = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    // Default use JSONResponseSerializer
     _wapi.responseSerializer                 = [AFJSONResponseSerializer serializer];
+    
+    // File api initialized, Default use HTTPResponseSerializer
+    _fapi                                    = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    _fapi.responseSerializer                 = [AFHTTPResponseSerializer serializer];
     if ( self ) {
         
     }

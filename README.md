@@ -5,11 +5,11 @@
 [![License](https://img.shields.io/cocoapods/l/MSWebApp.svg?style=flat)](http://cocoapods.org/pods/MSWebApp)
 [![Platform](https://img.shields.io/cocoapods/p/MSWebApp.svg?style=flat)](http://cocoapods.org/pods/MSWebApp)
 
-What's `MSWebApp`: More and more html/html5 show in native apps, learn react-native, weex, and other web app framework will waste a lot of times, also, we only need some dynamic pages use html for show. `MSWebApp`is used for this!
+What's `MSWebApp`: More and more html pages and frameworks used in app, like: react-native, weex, phone-gap and more. Learning that will cost a lot of time. more times, we only need a little html pages. `MSWebApp` is used for dynamic manage the modules.
 
-MSWebApp provide an webViewController with JavaScript bridge, auto check server modules and download it, match local file URL with origin URL, custom your webView with basic web container. But it's not enough, i will do something better, like: LRU with resources, auto check image resources with `MSURLProtocol`, cached with `SDWebImage`, in memory caches.
+MSWebApp support webViewController for used, with JavaScript bridge. Auto update server module info and download. 
 
-Functions And futures:
+Functions And features:
 
 - [x] WKWebView/UIWebView support.
 - [x] WebView-JavaScript bridge support.
@@ -18,9 +18,8 @@ Functions And futures:
 - [x] Auto check URL, load from local or server.
 - [x] Module download progress and do or not download when get config success. sync download.
 - [x] Auto download module, now use but not download yet.
-- [x] simple FileBrowser, use `MSFileBrowserTableViewController`, don't delete html resources files like `css`、`js`, the 1.0.1 version havn't check html resource files, i will do it in next versions.
-- [ ] LRU, resources in memory cached control
-- [ ] URLProtocol
+- [x] simple FileBrowser, use `MSFileBrowserTableViewController`, don't delete html resources files like `css`、`js`.
+- [x] URLProtocol for resource check, support css, js, less, sass.
 - [ ] Cache control, Disk cache to inMemory cache and webView cache.
 
 ## How to use
@@ -31,19 +30,18 @@ pod "MSWebApp", "~> 1.0.1"
 #import <MSWebApp/MSWebApp.h>
 ```
 
-And then, in your appDelegate or where you want to load it:
+Give the info that `MSWebApp` needed. 
 
 ```objective-c
-// FullURL, is the server API path, where you can get the full config json object.
+// FullURL: Server API path, for get the full config.
 [MSWebApp webApp].fullURL = @"http://192.168.199.173:8080/webapp.json";
-// Type, is for you to seperate the difference business demand.
-// e.g, your company have: 'Student client', 'Teacher client', you may need it.
+
+// Type: for seperate the difference app.
+// If you have: 'Student client', 'Teacher client', you should need it.
 [MSWebApp startWithType:@"MEC"];
 ```
 
-This is the demo response object for `[MSWebApp webApp].fullURL`, `MSWebApp Framework`will POST to this URL, so your server response shuold like this. This response object only for `Version <= 1.0`, future, will add properties to every module.
-
-server API response:
+Demo response for `[MSWebApp webApp].fullURL`, `MSWebApp Framework` use POST method, server response shuold like this:
 
 ```
 {
@@ -59,7 +57,10 @@ server API response:
                                 };
                                 version = ib42;
                                 sync = "n",
-                                initdown = "y"
+                                initdown = "y",
+                                files: {
+                                    "/js/mui.js": "http://um.devdylan.cn/LeafModules/js/mui.js"
+                                }
                             },
                             {
                                 mid = bootstrap;
@@ -68,7 +69,10 @@ server API response:
                                 };
                                 version = ib43;
                                 sync = "n",
-                                initdown = "y"
+                                initdown = "y",
+                                files: {
+                                    "/js/mui.js": "http://um.devdylan.cn/LeafModules/js/mui.js"
+                                }
                             },
                             {
                                 mid = vueModule;
@@ -78,7 +82,8 @@ server API response:
                                 };
                                 version = "3.4.6";
                                 sync = "y",
-                                "initdown" = "n"
+                                "initdown" = "n",
+                                files: {}
                             }
                         );
         version = "3.3.4";
@@ -86,7 +91,7 @@ server API response:
 }
 ```
 
-Also, after start webApp, you can use KVO to observe the config and module loading state.
+Use KVO listen config and module load state:
 
 ```objc
 [[NSNotificationCenter defaultCenter]
@@ -95,8 +100,7 @@ Also, after start webApp, you can use KVO to observe the config and module loadi
     name:MSWebModuleFetchOk
     object:nil];
 ```
-
-The state you can get: 
+Public states:
 
 ```objective-c
 /** POST on config get success, notification.object is `MSWebAppOp`*/
@@ -113,23 +117,23 @@ FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchOk;
 FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchProgress;
 ```
 
-Now, hypothesis the module loaded complete. Open webView.
+Get webView:
 
 ```objective-c
 UIViewController * viewController = [MSWebApp instanceWithTplURL:_urlField.text];
 ```
 
-Yep, it's simple.also, you can get your own custom webView subClass of `MSWebViewController`. but you must set it before you get webViewController instance.
+Also, you can custom it by subClass of `MSWebViewController`. Must registe it before you get instance.
 
 ```objective-c
 [MSWebApp webApp].registedClass = [SubClass class];
 ```
 
-explain the URL for get webView Controller instance：
+URL rules:
 
 http://{[MSWebApp webApp].fullURL.host}/{ModuleId}/{URLsKey}?{query}
 
-URLsKey，it's a map in config response，get absolute path with something lik `id`.
+URLsKey，it's a map in config response，get absolute path with something like `id`.
 >Notice: URLs Map key, should have suffix `.tpl`!
 
 ```
@@ -141,15 +145,15 @@ URLsKey，it's a map in config response，get absolute path with something lik `
                                 };
                                 version = "3.4.6";
                                 sync = "n",
-                                initdown = "y"
+                                initdown = "y",
+                                files: {}
 }
 ```
 
-e.g: you want visit  `index.html` in this module,
+Visit  `index.html` in this module: 
 
-URL shoule be: `http://[MSWebApp webApp].fullURL.host/vueModule/enter.tpl?a=b`
-
-Why the host of URL shoule same as [MSWebApp webApp].fullURL.host, because i suggest use the Independent server to do this, it's the rule, you must comply with it.
+Shoule use: `http://[MSWebApp webApp].fullURL.host/vueModule/enter.tpl?a=b`
+Why the URL's host same as [MSWebApp webApp].fullURL.host: Suggest use Independent server to do this.
 
 ## Example project
 
@@ -157,14 +161,15 @@ Why the host of URL shoule same as [MSWebApp webApp].fullURL.host, because i sug
 
 ## WebApp version info
 
-Now, the 1.0.1 version can be used normally.
+Version: 1.0.1 can used for product.
+Version: 1.0.2 include URLProtocol, beta version, don't used for production.
 
-MSWebApp denpendences：
+Denpendences：
 
 ```ruby
-dependency 'AFNetworking' # For API Requets
+dependency 'AFNetworking' # API Requets
 dependency 'WebViewJavascriptBridge' # JS bridge
-dependency 'LKDBHelper' # Model2DB
+dependency 'LKDBHelper' # Model 2 DB
 dependency 'WPZipArchive' # Zip, unZip
 ```
 
@@ -176,19 +181,18 @@ MIT.
 
 #### URL
 
-
 http:/{host}/{moduleName}/{tplid}.tpl?{param}
 
 | Param        | Desc                                 |
 | ------------ | ------------------------------------ |
 | {moduleName} | mid                                  |
-| {tplid}      | TID（urls.key in module config json）  |
+| {tplid}      | TID（urls.key in module config json）|
 | {param}      | query                                |
 | {host}       | host same as config request API.host |
 
 ### APIs
 
-#### webapp.json (get full config)
+#### webapp.json (get config)
 
 API path：webapp.json
 
@@ -199,22 +203,18 @@ param list:
 |   app   | String |      |  Y   |            seperate product             |
 | version | String |      |  Y   | local webApp version, will auto append. |
 
->  if version is empty, server shoule response latest config.
->
->  The latest config have all active modules, MSWebApp framework will auto checkout it. update, cover or delete local modules.
+>  If version param empty, server shoule response the latest config.
+>  The latest config have all active modules, MSWebApp framework will check it. Update, cover or delete.
 
-Request like: Content-Type: application/json
+Request like:
 
 ```
+// Content-Type: application/json
 app: "MEC",
 version: "a4fc6"
 ```
 
-Future:
-
-- [ ] Check CRC for every file, Add file list to config.
-
-## html5 coding
+## html
 
 ```html
 <!DOCTYPE html>
@@ -238,8 +238,7 @@ Future:
 </html>
 ```
 
-> Tip: Html shoule distinguish in app or pc, when loaded it in `MSWebApp`, if Module download failure, will request server.
-
+>If Module download failure or lose file, will request from server.
 
 #### CMS
 
@@ -269,8 +268,8 @@ response：
 
 ## Questions
 
-Q：I want open my root App when loaded modules complete.
-A：observe `MSWebModuleFetchOk`And`MSWebAppGetOptionSuccess`, you will get`MSWebAppGetOptionSuccess` first, wait `FetchOK`, when you get this notification, build a temp array and add it, while temp array count same as [MSWebApp webapp].op.modules count, all modules loaded success. but you should care, if module loaded failure, you should do somthing.
+Q：I want to open my root App when modules loaded complete.
+A：Observe `MSWebModuleFetchOk` And `MSWebAppGetOptionSuccess`, you will get `MSWebAppGetOptionSuccess` first, wait `FetchOK`, when you get this notification, build a temp array and add it, while temp array count same as [MSWebApp webapp].op.modules count, all modules loaded success. but you should care, if module loaded failure, you should do somthing.
 
 Q：If config loaded failure？
-A：observe `MSWebAppGetOptionFailure`, do  `startWithType:`.
+A：Observe `MSWebAppGetOptionFailure`, do `startWithType:`.

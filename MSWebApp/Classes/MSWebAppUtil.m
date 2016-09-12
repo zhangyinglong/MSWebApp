@@ -117,7 +117,7 @@ NSString MS_CONST MSWebModuleFetchProgress = @"MSWebModuleFetchProgressNotificat
      Create And print local cache folder.
      */
     NSString * localRootCachePath = [self getLocalCachePath];
-    MSLog(@"\nWebApp Local root: %@", localRootCachePath);
+    MSLog(@"WebApp Local root: %@", localRootCachePath);
     /**
      Start get config
      */

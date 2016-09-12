@@ -8,18 +8,22 @@
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_1
 #undef  kMSWebAppSupportWKWebView
-#define kMSWebAppSupportWKWebView
+//#define kMSWebAppSupportWKWebView
 #endif
 
 #undef  MSWebAppWK
-#if defined (kMSWebAppSupportWKWebView)
-#define MSWebAppWK( __wk__, __ui__ ) __wk__
-#elif
+//#if defined (kMSWebAppSupportWKWebView)
+//#define MSWebAppWK( __wk__, __ui__ ) __wk__
+//#elif
 #define MSWebAppWK( __wk__, __ui__ ) __ui__
+//#endif
+
+#ifndef __OPTIMIZE__
+#define NSLog(...) printf("-> %s\n", [[NSString stringWithFormat:__VA_ARGS__] UTF8String]);
 #endif
 
 #undef  MSLog
-#define MSLog(fmt, ...) if ( [MSWebApp webApp].logging ) NSLog(fmt, ##__VA_ARGS__);
+#define MSLog(...) if ( [MSWebApp webApp].logging ) NSLog(__VA_ARGS__);
 
 #undef  MS_CONST
 #define MS_CONST *const

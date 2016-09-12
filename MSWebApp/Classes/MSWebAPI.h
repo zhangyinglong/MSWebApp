@@ -9,6 +9,11 @@
 @interface MSWebAPI : NSObject
 
 /**
+ File session manager.
+ */
+@property ( nonatomic, strong ) AFURLSessionManager * fapi;
+
+/**
  Wapi session manager.
  */
 @property ( nonatomic, strong ) AFURLSessionManager * wapi;
