@@ -1,8 +1,8 @@
 {
   "name": "MSWebApp",
-  "version": "1.0.1",
-  "summary": "A Local cached webView, Support UIWebView/WKWebView. Auto loaded modules from server and `mount` to App",
-  "description": "Local Cached webView, eazy config, cached the website to your iPhone local folder, for fast visit.\nTry it.",
+  "version": "1.0.2",
+  "summary": "MSWebApp is used for dynamic manage the modules.",
+  "description": "What's `MSWebApp`: More and more html pages and frameworks used in app, like: react-native, weex, phone-gap and more. Learning that will cost a lot of time. more times, we only need a little html pages. `MSWebApp` is used for dynamic manage the modules.",
   "homepage": "https://github.com/WildDylan/MSWebApp",
   "license": {
     "type": "MIT",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/WildDylan/MSWebApp.git",
-    "tag": "1.0.1"
+    "tag": "1.0.2"
   },
   "platforms": {
     "ios": "7.0"
