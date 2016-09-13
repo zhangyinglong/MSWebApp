@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'MSWebApp'
   s.version          = '1.0.2'
-  s.summary          = 'A Local cached webView, Support UIWebView/WKWebView. Auto loaded modules from server and `mount` to App'
+  s.summary          = 'MSWebApp is used for dynamic manage the modules.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,8 +18,8 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Local Cached webView, eazy config, cached the website to your iPhone local folder, for fast visit.
-Try it.
+What's `MSWebApp`: More and more html pages and frameworks used in app, like: react-native, weex, phone-gap and more. Learning that will cost a lot of time. more times, we only need a little html pages. `MSWebApp` is used for dynamic manage the modules.
+
                        DESC
 
   s.homepage         = 'https://github.com/WildDylan/MSWebApp'
