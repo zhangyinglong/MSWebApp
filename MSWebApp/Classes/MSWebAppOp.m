@@ -11,6 +11,7 @@
 #import "MSWebApp.h"
 #import "NSObject+LKDBHelper.h"
 #import "WPZipArchive.h"
+#import "MSMemory.h"
 
 @implementation MSWebAppOp
 
@@ -142,6 +143,7 @@
 }
 
 - (void) postLoadedFailure {
+    [[MSWebApp webApp].memoryCache popModule:self.mid];
     _mounting = NO;
     self.mountProgress = 0.0;
     MSLog(@"Mount failure! mid: %@", _mid);
@@ -149,6 +151,8 @@
 }
 
 - (void) postLoadedSuccess {
+    // Set memory cache.
+    [[MSWebApp webApp].memoryCache pushModule:self.mid];
     _mounting = NO;
     self.mountProgress = 1.0;
     MSLog(@"Mount module Succeed! mid: %@", _mid);

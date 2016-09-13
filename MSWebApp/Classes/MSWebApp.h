@@ -10,7 +10,7 @@
 #import "MSWebAppOp.h"
 #import "MSWebAppUtil.h"
 
-@class MSWebViewController;
+@class MSWebViewController, MSMemory;
 /**
  MSWebApp: Hybrid framework, for local html5.zip updated dynamic.
  */
@@ -70,6 +70,8 @@
  Get logging state.
  */
 @property ( nonatomic, readonly, assign ) BOOL logging;
+
+@property ( nonatomic, strong ) MSMemory *memoryCache;
 
 @end
 

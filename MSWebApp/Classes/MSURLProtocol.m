@@ -9,6 +9,7 @@
 #import "MSURLProtocol.h"
 #import "MSWebAppUtil.h"
 #import "MSFileCRC.h"
+#import "MSMemory.h"
 
 #define kMSURLProtocolRecursiveIdentifier @"com.mswebapp.urlprotocol.recursive"
 
@@ -23,7 +24,6 @@
 
 + (void) load {
     if ( [NSURLProtocol registerClass:self] ) {
-        MSLog(@"WebApp Started URLProtocol for Resources filter");
     }
 }
 
@@ -31,14 +31,13 @@
     NSDictionary    *headerFields;
     NSURL           *requestedURL;
     
-    MSLog(@"%@", request.URL);
-    
     headerFields = [NSDictionary dictionaryWithDictionary:request.allHTTPHeaderFields?:@{}];
     requestedURL = request.URL;
     
     if ( [self propertyForKey:kMSURLProtocolRecursiveIdentifier inRequest:request] ) {
         return NO;
     }
+    
     // Validated URL And MSWebApp Requests.
     if ( [[headerFields valueForKey:kMSWebAppIdentifier] isEqualToString:MSURLProtocolIdentifier] ) {
         // Now, we have no need to do something with MSWebApp's requests, so return NO;
@@ -52,26 +51,15 @@
         // Notice: Other plug-in or modules get the webApp cached path with `URLRequest`
         // will hander by this protocol.
         if ( [requestedURL.path containsString:cachedRootPath] ) {
-            // If local file is missed or modified, change the resources to remote server request.
-            // Only handler resources loaded. like css, js lost.
             NSArray     *handledResourceType;
             NSString    *pathExtension;
-            NSString    *fullFilePath;
             
             handledResourceType     = @[@"css", @"js", @"less", @"sass"];
             pathExtension           = requestedURL.pathExtension;
-            fullFilePath            = requestedURL.path;
-            
             if ( [handledResourceType containsObject:pathExtension] ) {
-                // File CRC is can't validated,
-                // Notice: File md5 and crc will cost a lot of times when file is big
-                // unsigned short c = [MSFileCRC crcForFile:fullFilePath];
-                // File is losted.
-                if ( ![[NSFileManager defaultManager] fileExistsAtPath:fullFilePath] ) {
-                    return YES;
-                }
+                MSLog(@"URLProtocol: %@", request.URL);
+                return YES;
             }
-            return NO;
         }
     }
     return NO;
@@ -79,6 +67,47 @@
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
     NSMutableURLRequest     *result;
+    NSURL                   *requestedURL;
+    NSString                *fullFilePath;
+    NSString                *moduleFilePath;
+    
+    // Get origin URL, protocol can use this method means resources file lost or errored.
+    requestedURL    = request.URL;
+    fullFilePath    = requestedURL.path;
+    // Get real module id.
+    moduleFilePath = [fullFilePath componentsSeparatedByString:[MSWebAppUtil getLocalCachePath]].lastObject;
+    MSWebAppModule *module = [self getModuleInRequest:request];
+    if ( module && module.files ) {
+        NSString    *localFilePath;
+        NSString    *remoteFilePath;
+        NSURL       *remoteURL;
+        localFilePath = [moduleFilePath stringByReplacingOccurrencesOfString:module.mid withString:@""];
+        // Check use memory cache or not!
+        // If NSFileManager has this file and route here, should be load in memory cache.
+        if ( [[NSFileManager defaultManager] fileExistsAtPath:fullFilePath] ) {
+            MSMemory    *memory;
+            
+            memory = [MSWebApp webApp].memoryCache;
+            // If memory cache has file data, return the origin request.
+            if ( memory && [memory datainModule:module.mid key:localFilePath] ) {
+                return request;
+            }
+        }
+        // Get remote file
+        remoteFilePath = module.files[[self getLocalResourcesKey:request]];
+        // Get remote File URL from module files map.
+        if ( remoteFilePath ) {
+            remoteURL = [NSURL URLWithString:remoteFilePath];
+            if ( remoteURL ) {
+                result = [NSURLRequest requestWithURL:remoteURL];
+                return result;
+            }
+        }
+    }
+    return request;
+}
+
++ (MSWebAppModule *) getModuleInRequest: (NSURLRequest *) request {
     NSURL                   *requestedURL;
     NSString                *fullFilePath;
     NSString                *cachedRootPath;
@@ -101,29 +130,36 @@
     // Validated module id.
     if ( moduleId ) {
         // Validated module in operation.
-        MSWebAppModule *module = [MSWebApp webApp].op.moduleMap[moduleId];
-        if ( module && module.files ) {
-            NSString    *localFilePath;
-            NSString    *remoteFilePath;
-            NSURL       *remoteURL;
-            // Operate the module file path to file absolute path,
-            // Should check path is corrected.
-            if ( [moduleFilePath hasPrefix:@"/"] ) {
-                moduleFilePath = [moduleFilePath substringFromIndex:1];
-            }
-            localFilePath = [moduleFilePath stringByReplacingOccurrencesOfString:moduleId withString:@""];
-            remoteFilePath = module.files[localFilePath];
-            // Get remote File URL from module files map.
-            if ( remoteFilePath ) {
-                remoteURL = [NSURL URLWithString:remoteFilePath];
-                if ( remoteURL ) {
-                    result = [NSURLRequest requestWithURL:remoteURL];
-                    return result;
-                }
-            }
-        }
+        return [MSWebApp webApp].op.moduleMap[moduleId];
     }
-    return request;
+    return nil;
+}
+
++ (NSString *) getLocalResourcesKey: (NSURLRequest *) request {
+    NSURL                   *requestedURL;
+    NSString                *fullFilePath;
+    NSString                *cachedRootPath;
+    NSString                *moduleFilePath;
+    
+    // Get origin URL, protocol can use this method means resources file lost or errored.
+    requestedURL    = request.URL;
+    fullFilePath    = requestedURL.path;
+    cachedRootPath  = [MSWebAppUtil getLocalCachePath];
+    // Get real module id.
+    moduleFilePath = [fullFilePath componentsSeparatedByString:cachedRootPath].lastObject;
+    // Validated module id.
+    // Validated module in operation.
+    MSWebAppModule *module = [self getModuleInRequest:request];
+    if ( module && module.files ) {
+        NSString    *localFilePath;
+        // Operate the module file path to file absolute path,
+        // Should check path is corrected.
+        if ( [moduleFilePath hasPrefix:@"/"] ) {
+            moduleFilePath = [moduleFilePath substringFromIndex:1];
+        }
+        return [moduleFilePath stringByReplacingOccurrencesOfString:module.mid withString:@""];
+    }
+    return nil;
 }
 
 - (instancetype)initWithRequest:(NSURLRequest *)request
@@ -144,6 +180,32 @@
     NSMutableURLRequest     *recursiveRequest;
     // change request to mutable, for set recursive identifier for the request.
     recursiveRequest    = [[self request] mutableCopy];
+    // If memory cached, use the data.
+    MSWebAppModule *module = [[self class] getModuleInRequest:recursiveRequest];
+    MSMemory *memory = [MSWebApp webApp].memoryCache;
+    
+    // If memory cache has file data, return the origin request.
+    NSData *data = [memory datainModule:module.mid key:[[self class] getLocalResourcesKey:recursiveRequest]];
+    if ( data ) {
+        MSLog(@"%@", @"Loaded from memory cache!");
+        NSString * mime = @"";
+        NSString * contentLength = data ? [NSString stringWithFormat:@"%d", data.length]:@"0";
+        NSString * cacheControl = @"max-age=315360000,s-maxage=60";
+        
+        NSMutableDictionary * header = [[NSMutableDictionary alloc] initWithCapacity:0];
+        
+        [header setObject:mime          forKey:@"Content-Type"];
+        [header setObject:contentLength forKey:@"Content-Length"];
+        [header setObject:cacheControl  forKey:@"Cache-Control"];
+        
+        NSHTTPURLResponse * httpResponse = [[NSHTTPURLResponse alloc] initWithURL:[recursiveRequest URL] statusCode:200 HTTPVersion:@"1.1" headerFields:header];
+        
+        [[self client] URLProtocol:self didReceiveResponse:httpResponse cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+        [[self client] URLProtocol:self didLoadData:data];
+        [[self client] URLProtocolDidFinishLoading:self];
+        return ;
+    }
+    MSLog(@"%@", @"Loaded from remote resource!");
     // Set identifier
     [MSURLProtocol setProperty:@YES forKey:kMSURLProtocolRecursiveIdentifier inRequest:recursiveRequest];
     // Build a new task for request.
@@ -164,7 +226,7 @@
              // implementation has `failed` to load.
              [[weaks client] URLProtocol:weaks didFailWithError:error];
          }
-    }];
+     }];
     // Sets a block to be executed when an HTTP request is attempting to perform a redirection to a different URL,
     // as handled by the `NSURLSessionTaskDelegate` method `URLSession:willPerformHTTPRedirection:newRequest:completionHandler:`.
     [_sessionManager
@@ -180,7 +242,7 @@
          [weaks.task cancel];
          [[weaks client] URLProtocol:weaks didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
          return redirectRequest;
-    }];
+     }];
     // Receive response.
     // TODO: Should check `Cache-Control`, `no-store` in headerField. Now, set always allowed load.
     [_sessionManager
@@ -189,14 +251,14 @@
          // implementation has created an NSURLResponse for the current load.
          [[weaks client] URLProtocol:weaks didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
          return NSURLSessionResponseAllow;
-    }];
+     }];
     // Did receive data here.
     [_sessionManager
      setDataTaskDidReceiveDataBlock:^(NSURLSession *session, NSURLSessionDataTask *dataTask, NSData *data) {
          // Indicates to an NSURLProtocolClient that the protocol
          // implementation has loaded URL data.
          [[weaks client] URLProtocol:weaks didLoadData:data];
-    }];
+     }];
     // Send task.
     [self.task resume];
 }

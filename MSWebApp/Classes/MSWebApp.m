@@ -8,6 +8,7 @@
 
 #import "MSWebApp.h"
 #import "MSWebAppUtil.h"
+#import "MSMemory.h"
 
 @interface MSWebApp ()
 
@@ -22,6 +23,7 @@
         if ( !app ) {
             app = [[MSWebApp alloc] init];
             app.net = [[MSWebAPI alloc] init];
+            app.memoryCache = [[MSMemory alloc] init];
         }
     });
     return app;
@@ -77,7 +79,7 @@
     if ( !module.urls || !module.urls[paths[1]]) {
         return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:string];
     }
-    
+    // Build real file path to visit the website.
     NSString * urlWithoutQuery = [[module getCachedPath] stringByAppendingPathComponent:module.urls[paths[1]]];
     NSString * realPath =
     [NSString stringWithFormat:@"%@?%@", [[module getCachedPath] stringByAppendingPathComponent:module.urls[paths[1]]], URL.query?: @"query=none" ];
