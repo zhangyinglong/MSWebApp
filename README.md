@@ -18,7 +18,7 @@ Functions And features:
 - [x] Auto reDownload when in used but file lose.
 - [x] Provide a fileBrowser.
 - [x] URLProtocol for resource check. Css, js, less, sass can be hooked.
-- [ ] Cache control, Disk cache, InMemory cache and resources cache.
+- [x] Cache control, Disk cache, InMemory resource cache ( in master branch, in test!).
 
 ## How to use
 
