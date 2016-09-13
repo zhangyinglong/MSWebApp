@@ -5,22 +5,20 @@
 [![License](https://img.shields.io/cocoapods/l/MSWebApp.svg?style=flat)](http://cocoapods.org/pods/MSWebApp)
 [![Platform](https://img.shields.io/cocoapods/p/MSWebApp.svg?style=flat)](http://cocoapods.org/pods/MSWebApp)
 
-What's `MSWebApp`: More and more html pages and frameworks used in app, like: react-native, weex, phone-gap and more. Learning that will cost a lot of time. more times, we only need a little html pages. `MSWebApp` is used for dynamic manage the modules.
-
-MSWebApp support webViewController for used, with JavaScript bridge. Auto update server module info and download. 
+What's `MSWebApp`: More and more html pages and frameworks has been used. React-native, weex, phone-gap ..., Learning that will spent a lot of time. But we only need some html page for a part of app. `MSWebApp`, dynamic manage and mount modules. 
 
 Functions And features:
 
-- [x] WKWebView/UIWebView support.
-- [x] WebView-JavaScript bridge support.
-- [x] Auto check and download modules.
-- [x] Custom webViewController. (subClass it).
-- [x] Auto check URL, load from local or server.
-- [x] Module download progress and do or not download when get config success. sync download.
-- [x] Auto download module, now use but not download yet.
-- [x] simple FileBrowser, use `MSFileBrowserTableViewController`, don't delete html resources files like `css`、`js`.
-- [x] URLProtocol for resource check, support css, js, less, sass.
-- [ ] Cache control, Disk cache to inMemory cache and webView cache.
+- [x] UIWebView support (Why not WKWebView? Can't hook with `URLProtocol`).
+- [x] WebView-JavaScript bridge.
+- [x] Check and download modules in diff.
+- [x] Custom browser.
+- [x] Convert URL to local file URL.
+- [x] Module mount progress and do or not download when init, use sync download or not.
+- [x] Auto reDownload when in used but file lose.
+- [x] Provide a fileBrowser.
+- [x] URLProtocol for resource check. Css, js, less, sass can be hooked.
+- [ ] Cache control, Disk cache, InMemory cache and resources cache.
 
 ## How to use
 
@@ -30,13 +28,13 @@ pod "MSWebApp", "~> 1.0.1"
 #import <MSWebApp/MSWebApp.h>
 ```
 
-Give the info that `MSWebApp` needed. 
+Info that `MSWebApp` needed:
 
 ```objective-c
 // FullURL: Server API path, for get the full config.
 [MSWebApp webApp].fullURL = @"http://192.168.199.173:8080/webapp.json";
 
-// Type: for seperate the difference app.
+// Type: Seperate the difference app.
 // If you have: 'Student client', 'Teacher client', you should need it.
 [MSWebApp startWithType:@"MEC"];
 ```
@@ -45,62 +43,64 @@ Demo response for `[MSWebApp webApp].fullURL`, `MSWebApp Framework` use POST met
 
 ```
 {
-    app =     {
-        module =         (
-                            {
-                                mid = LeafModules;
-                                packageurl = "http://um.devdylan.cn/LeafModules.zip";
-                                urls =                 {
-                                    "classPayment.tpl" = "classPayment.html";
-                                    "detail.tpl" = "detail/detail.html";
-                                    "enter.tpl" = "index.html";
-                                };
-                                version = ib42;
-                                sync = "n",
-                                initdown = "y",
-                                files: {
-                                    "/js/mui.js": "http://um.devdylan.cn/LeafModules/js/mui.js"
-                                }
-                            },
-                            {
-                                mid = bootstrap;
-                                packageurl = "http://um.devdylan.cn/bootstrap.zip";
-                                urls =                 {
-                                };
-                                version = ib43;
-                                sync = "n",
-                                initdown = "y",
-                                files: {
-                                    "/js/mui.js": "http://um.devdylan.cn/LeafModules/js/mui.js"
-                                }
-                            },
-                            {
-                                mid = vueModule;
-                                packageurl = "http://um.devdylan.cn/vueModule.zip";
-                                urls =                 {
-                                    "enter.tpl" = "index.html";
-                                };
-                                version = "3.4.6";
-                                sync = "y",
-                                "initdown" = "n",
-                                files: {}
-                            }
-                        );
-        version = "3.3.4";
-    };
+app =     {
+module =         (
+{
+mid = LeafModules;
+packageurl = "http://um.devdylan.cn/LeafModules.zip";
+urls =                 {
+"classPayment.tpl" = "classPayment.html";
+"detail.tpl" = "detail/detail.html";
+"enter.tpl" = "index.html";
+};
+version = ib42;
+sync = "n",
+initdown = "y",
+files: {
+"/js/mui.js": "http://um.devdylan.cn/LeafModules/js/mui.js"
+}
+},
+{
+mid = bootstrap;
+packageurl = "http://um.devdylan.cn/bootstrap.zip";
+urls =                 {
+};
+version = ib43;
+sync = "n",
+initdown = "y",
+files: {
+"/js/mui.js": "http://um.devdylan.cn/LeafModules/js/mui.js"
+}
+},
+{
+mid = vueModule;
+packageurl = "http://um.devdylan.cn/vueModule.zip";
+urls =                 {
+"enter.tpl" = "index.html";
+};
+version = "3.4.6";
+sync = "y",
+"initdown" = "n",
+files: {}
+}
+);
+version = "3.3.4";
+};
 }
 ```
 
-Use KVO listen config and module load state:
+Use KVO:
 
 ```objc
 [[NSNotificationCenter defaultCenter]
-    addObserver:self
-    selector:@selector(reloadData:)
-    name:MSWebModuleFetchOk
-    object:nil];
+addObserver:self
+selector:@selector(reloadData:)
+name:MSWebModuleFetchOk
+object:nil];
 ```
-Public states:
+
+States:
+
 
 ```objective-c
 /** POST on config get success, notification.object is `MSWebAppOp`*/
@@ -117,7 +117,7 @@ FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchOk;
 FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchProgress;
 ```
 
-Get webView:
+Get browser instance:
 
 ```objective-c
 UIViewController * viewController = [MSWebApp instanceWithTplURL:_urlField.text];
@@ -138,15 +138,15 @@ URLsKey，it's a map in config response，get absolute path with something like 
 
 ```
 {
-                                mid = vueModule;
-                                packageurl = "http://um.devdylan.cn/vueModule.zip";
-                                urls =                 {
-                                    "enter.tpl" = "index.html";
-                                };
-                                version = "3.4.6";
-                                sync = "n",
-                                initdown = "y",
-                                files: {}
+mid = vueModule;
+packageurl = "http://um.devdylan.cn/vueModule.zip";
+urls =                 {
+"enter.tpl" = "index.html";
+};
+version = "3.4.6";
+sync = "n",
+initdown = "y",
+files: {}
 }
 ```
 
@@ -220,20 +220,20 @@ version: "a4fc6"
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Document test</title>
-    <!-- loaded public css, use relative path, All modules will in same level directory. -->
-    <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.css">
+<meta charset="UTF-8">
+<title>Document test</title>
+<!-- loaded public css, use relative path, All modules will in same level directory. -->
+<link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.css">
 </head>
 <body>
-	<form class="form-search">
-	  	<input type="text" class="input-medium search-query">
-  		<button type="submit" class="btn btn-info">Search</button>
-	</form>
-	
-	<button class="btn btn-large btn-block btn-primary" type="button">Block level button</button>
-	<button class="btn btn-large btn-block" type="button">Block level button</button>
-	
+<form class="form-search">
+<input type="text" class="input-medium search-query">
+<button type="submit" class="btn btn-info">Search</button>
+</form>
+
+<button class="btn btn-large btn-block btn-primary" type="button">Block level button</button>
+<button class="btn btn-large btn-block" type="button">Block level button</button>
+
 </body>
 </html>
 ```
@@ -261,15 +261,15 @@ response：
 
 ```
 {
-  "message": "update success!",
-  "status" : "successful",
+"message": "update success!",
+"status" : "successful",
 }
 ```
 
 ## Questions
 
-Q：I want to open my root App when modules loaded complete.
+Q：I want enter App when modules mounted.
 A：Observe `MSWebModuleFetchOk` And `MSWebAppGetOptionSuccess`, you will get `MSWebAppGetOptionSuccess` first, wait `FetchOK`, when you get this notification, build a temp array and add it, while temp array count same as [MSWebApp webapp].op.modules count, all modules loaded success. but you should care, if module loaded failure, you should do somthing.
 
-Q：If config loaded failure？
+Q：If config loaded with error？
 A：Observe `MSWebAppGetOptionFailure`, do `startWithType:`.
