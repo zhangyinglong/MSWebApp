@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MSWebApp'
-  s.version          = '1.0.3'
+  s.version          = '1.0.4'
   s.summary          = 'MSWebApp is used for dynamic manage the modules.'
 
 # This description is used to generate tags and improve search results.
@@ -22,14 +22,14 @@ What's `MSWebApp`: More and more html pages and frameworks used in app, like: re
 
                        DESC
 
-  s.homepage         = 'https://github.com/WildDylan/MSWebApp'
+  s.homepage         = 'https://github.com/90Team/MSWebApp'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Dylan' => 'dylan@china.com' }
-  s.source           = { :git => 'https://github.com/WildDylan/MSWebApp.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/90Team/MSWebApp.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '7.0'
+  s.ios.deployment_target = '7.1'
 
   s.source_files = 'MSWebApp/Classes/**/*'
   
@@ -39,7 +39,7 @@ What's `MSWebApp`: More and more html pages and frameworks used in app, like: re
 
   s.public_header_files = 'MSWebApp/Classes/**/*.h'
   s.frameworks = 'UIKit', 'Foundation', 'WebKit'
-  s.dependency 'AFNetworking'
+  s.dependency 'MKNetworking'
   s.dependency 'WebViewJavascriptBridge'
   s.dependency 'LKDBHelper'
   s.dependency 'WPZipArchive'
