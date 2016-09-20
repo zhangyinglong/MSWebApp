@@ -89,6 +89,8 @@
         [module reset];
     }
     realURL = [NSURL fileURLWithPath:realPath];
+    
+    [[MSWebApp webApp].memoryCache pushModule:module.mid];
     return [[[MSWebApp webApp].getRegistedClass alloc] initWithURLs:realURL.absoluteString];
 }
 

@@ -34,6 +34,8 @@
     _memoryCache    = [NSMutableDictionary dictionaryWithCapacity:1];
     if ( !self ) {
         MSLog(@"%@", @"MSMemory initialized with error!");
+        //When received memory warning, remove all in memory cached data.
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeAll) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
     return self;
 }
@@ -58,7 +60,7 @@
             NSString *realFilePath =
             [[module getCachedPath] stringByAppendingPathComponent:module.urls[tplId]];
             if ( [[NSFileManager defaultManager] fileExistsAtPath:realFilePath] ) {
-                [moduleCache setObject:[NSData dataWithContentsOfFile:realFilePath]?:[NSData data] forKey:tplId];
+                [moduleCache setObject:[NSData dataWithContentsOfFile:realFilePath]?:[NSString string] forKey:tplId];
             }
         }
         // Push fileId->fileRealData in thie cached dict
@@ -66,7 +68,7 @@
             NSString *realFilePath =
             [[module getCachedPath] stringByAppendingPathComponent:fileId];
             if ( [[NSFileManager defaultManager] fileExistsAtPath:realFilePath] ) {
-                [moduleCache setObject:[NSData dataWithContentsOfFile:realFilePath]?:[NSData data] forKey:fileId];
+                [moduleCache setObject:[NSData dataWithContentsOfFile:realFilePath]?:[NSString string] forKey:fileId];
             }
         }
     }
@@ -97,7 +99,7 @@
 - (BOOL) setData: (NSData *) data forKey: (NSString *) key inModule: (NSString *) mid {
     NSMutableDictionary *cachedModule = _memoryCache[mid];
     if ( cachedModule ) {
-        [cachedModule setObject:data?:[NSData data] forKey:key];
+        [cachedModule setObject:data?:[NSString string] forKey:key];
     }
     return NO;
 }

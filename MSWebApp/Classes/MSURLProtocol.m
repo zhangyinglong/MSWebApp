@@ -188,7 +188,8 @@
     // If memory cache has file data, return the origin request.
     NSString *key = [[self class] getLocalResourcesKey:recursiveRequest];
     NSData *data = [memory datainModule:module.mid key:key];
-    if ( data ) {
+    
+    if ( data && [data isKindOfClass:[NSData class]] ) {
         MSLog(@"%@", @"Loaded from memory cache!");
         // MIME-TYPE
         NSString * mime = [MSWebAppUtil mimetypeForResources:key];
