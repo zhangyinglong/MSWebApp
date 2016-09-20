@@ -17,7 +17,7 @@ Functions And features:
 - [x] Module mount progress and do or not download when init, use sync download or not.
 - [x] Auto reDownload when in used but file lose.
 - [x] Provide a fileBrowser.
-- [x] URLProtocol for resource check. Css, js, less, sass can be hooked.
+- [x] URLProtocol for resource check. Now, css, js, png, jpg, gif, mp3, mp4 has mime-type check.
 - [x] Cache control, Disk cache, InMemory resource cache ( in master branch, in test!).
 
 ## How to use

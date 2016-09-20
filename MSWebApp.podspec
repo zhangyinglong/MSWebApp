@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MSWebApp'
-  s.version          = '1.0.4'
+  s.version          = '1.0.5'
   s.summary          = 'MSWebApp is used for dynamic manage the modules.'
 
 # This description is used to generate tags and improve search results.

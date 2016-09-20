@@ -128,4 +128,32 @@ NSString MS_CONST MSWebModuleFetchProgress = @"MSWebModuleFetchProgressNotificat
     [MSWebAppUtil cleanWebView];
 }
 
++ (NSString *) mimetypeForResources: (NSString *) resourcesFullName {
+    if ( [resourcesFullName hasSuffix:@".css"] ) {
+        return @"text/css";
+    }
+    if ( [resourcesFullName hasSuffix:@".js"] ) {
+        return @"application/x-javascript";
+    }
+    if ( [resourcesFullName hasSuffix:@".jpg"] ) {
+        return @"image/jpeg";
+    }
+    if ( [resourcesFullName hasSuffix:@".png"] ) {
+        return @"image/png";
+    }
+    if ( [resourcesFullName hasSuffix:@".gif"] ) {
+        return @"image/gif";
+    }
+    if ( [resourcesFullName hasSuffix:@".ico"] ) {
+        return @"image/x-icon";
+    }
+    if ( [resourcesFullName hasSuffix:@".mp3"] ) {
+        return @"audio/mp3";
+    }
+    if ( [resourcesFullName hasSuffix:@".mp4"] ) {
+        return @"video/mpeg4";
+    }
+    return @"";
+}
+
 @end

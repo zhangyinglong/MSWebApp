@@ -73,4 +73,9 @@ FOUNDATION_EXTERN NSString MS_CONST MSWebModuleFetchProgress;
  */
 + (void) initialized;
 
+/**
+ Get mime type
+ */
++ (NSString *) mimetypeForResources: (NSString *) resourcesFullName;
+
 @end

@@ -54,7 +54,7 @@
             NSArray     *handledResourceType;
             NSString    *pathExtension;
             
-            handledResourceType     = @[@"css", @"js", @"less", @"sass"];
+            handledResourceType     = @[@"css", @"js", @"ico", @"png", @"jpg", @"gif", @"mp3", @"mp4"];
             pathExtension           = requestedURL.pathExtension;
             if ( [handledResourceType containsObject:pathExtension] ) {
                 MSLog(@"URLProtocol: %@", request.URL);
@@ -81,6 +81,7 @@
         NSString    *localFilePath;
         NSString    *remoteFilePath;
         NSURL       *remoteURL;
+        
         localFilePath = [moduleFilePath stringByReplacingOccurrencesOfString:module.mid withString:@""];
         // Check use memory cache or not!
         // If NSFileManager has this file and route here, should be load in memory cache.
@@ -185,11 +186,13 @@
     MSMemory *memory = [MSWebApp webApp].memoryCache;
     
     // If memory cache has file data, return the origin request.
-    NSData *data = [memory datainModule:module.mid key:[[self class] getLocalResourcesKey:recursiveRequest]];
+    NSString *key = [[self class] getLocalResourcesKey:recursiveRequest];
+    NSData *data = [memory datainModule:module.mid key:key];
     if ( data ) {
         MSLog(@"%@", @"Loaded from memory cache!");
-        NSString * mime = @"";
-        NSString * contentLength = data ? [NSString stringWithFormat:@"%d", data.length]:@"0";
+        // MIME-TYPE
+        NSString * mime = [MSWebAppUtil mimetypeForResources:key];
+        NSString * contentLength = data? [NSString stringWithFormat:@"%d", data.length]: @"0";
         NSString * cacheControl = @"max-age=315360000,s-maxage=60";
         
         NSMutableDictionary * header = [[NSMutableDictionary alloc] initWithCapacity:0];
