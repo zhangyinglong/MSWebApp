@@ -39,7 +39,7 @@ What's `MSWebApp`: More and more html pages and frameworks used in app, like: re
 
   s.public_header_files = 'MSWebApp/Classes/**/*.h'
   s.frameworks = 'UIKit', 'Foundation', 'WebKit'
-  s.dependency 'MKNetworking'
+  s.dependency 'AFNetworking'
   s.dependency 'WebViewJavascriptBridge'
   s.dependency 'LKDBHelper'
   s.dependency 'WPZipArchive'
