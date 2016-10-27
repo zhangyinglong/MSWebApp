@@ -1,0 +1,25 @@
+.slds-form--stacked {
+  margin: 0 auto;
+  margin-top: 16% !important;
+  width: 600px;
+  border-radius: 5px;
+  border: 1px solid rgb(88, 102, 124);
+  padding: 30px 50px 40px 50px;
+}
+.login-p {
+  font-size: 18px;
+  color: #FFFFFF;
+}
+.login-button {
+  font-size: 13px !important;
+  font-family: sans-serif, "Hiragino Sans GB W3", "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Microsoft Yahei", STHeiti !important;
+  font-weight: 200;
+  width: 100%;
+}
+@media screen and (max-width:620px){
+
+  .slds-form--stacked {
+    width: 300px;
+    padding: 15px;
+  }
+}

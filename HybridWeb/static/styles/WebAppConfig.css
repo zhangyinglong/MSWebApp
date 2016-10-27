@@ -1,0 +1,20 @@
+.wac-content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.wac-content-table {
+  background-color: rgb(78, 92, 114);
+}
+.wac-content-table-head {
+  color: #FFFFFF;
+}
+.wac-content-table-cell {
+  font-family: sans-serif, "Hiragino Sans GB W3", "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Microsoft Yahei", STHeiti;
+  font-size: 14px;
+  color: #FFFFFF;
+  font-weight: normal
+}
+.wac-content-button {
+  background-color: rgb(78, 92, 114);
+  color: #FFFFFF;
+}

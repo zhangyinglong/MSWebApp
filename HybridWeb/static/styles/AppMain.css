@@ -1,0 +1,92 @@
+.content {
+  padding-left: 0px;
+  padding-right: 0px;
+  height: 90%;
+}
+.left-title {
+  font-family: sans-serif, "Hiragino Sans GB W3", "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Microsoft Yahei", STHeiti;
+  font-size: 36px;
+  color: #FFFFFF;
+  font-weight: 200;
+  line-height: 36px;
+}
+.text-left {
+  font-family: sans-serif, "Hiragino Sans GB W3", "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Microsoft Yahei", STHeiti;
+  font-size: 24px;
+  color: rgb(48, 197, 156);
+  font-weight: 200;
+}
+.text-right {
+  font-family: sans-serif, "Hiragino Sans GB W3", "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Microsoft Yahei", STHeiti;
+  font-size: 24px;
+  color: #FFFFFF;
+  font-weight: 200;
+}
+.left a {
+  margin-top: 20px;
+  display: block;
+  width: 120px;
+  height: 40px;
+  border-radius: 19px;
+  border: 1px solid white;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  font-family: sans-serif, "Hiragino Sans GB W3", "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Microsoft Yahei", STHeiti;
+  /*font-weight: lighter;*/
+  padding-top: 13px;
+  line-height: 12px;
+  text-decoration: none;
+}
+.left a:hover {
+  color: rgb(48, 197, 156);
+  text-decoration: none;
+  border-color: rgb(48, 197, 156);
+}
+.left-detail {
+  margin-top: 20px;
+}
+.left {
+  position: relative;
+  top: 35%;
+  margin-left: 12%;
+  float: left;
+}
+.right img {
+  height: 407px;
+  width: 550px;
+}
+.right {
+  float: left;
+  margin-left: 12%;
+  margin-top: 8%;
+}
+@media screen and (max-width:415px) {
+  .content {
+    height: 80%;
+    margin-top: 0px;
+  }
+  .nav-bar {
+    height: 20%;
+    padding: 0px;
+  }
+  .left-detail {
+    margin-top: 20px;
+  }
+  .right img {
+    height: 74%;
+    width: 100%;
+  }
+  .right {
+    float: none;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 20%;
+  }
+  .left {
+    position: inherit;
+    top: 0%;
+    margin-left: 12%;
+    float: none;
+  }
+}

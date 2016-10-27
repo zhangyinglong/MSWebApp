@@ -1,0 +1,40 @@
+.srv-content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+.srv-content p {
+  color: #FFFFFF;
+  font-family: sans-serif, "Hiragino Sans GB W3", "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Microsoft Yahei", STHeiti;
+  font-size: 24px;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.srv-content-tip {
+  color: #FFFFFF;
+}
+.srv-content-form-ele {
+  margin-bottom: 10px;
+}
+.srv-content a {
+  margin: 0 auto;
+  display: block;
+  width: 120px;
+  height: 40px;
+  border-radius: 19px;
+  border: 1px solid white;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  font-family: sans-serif, "Hiragino Sans GB W3", "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Microsoft Yahei", STHeiti;
+  /*font-weight: lighter;*/
+  padding-top: 13px;
+  line-height: 12px;
+  text-decoration: none;
+}
+.srv-content a:hover {
+  color: rgb(48, 197, 156);
+  text-decoration: none;
+  border-color: rgb(48, 197, 156);
+}
