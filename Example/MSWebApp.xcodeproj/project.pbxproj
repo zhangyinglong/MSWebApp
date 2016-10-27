@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		45D11844D8A76B88FA2E8AC7 /* Pods_MSWebApp_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABB6F2C37B104E0ECA2CA88A /* Pods_MSWebApp_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -16,6 +15,7 @@
 		6003F59E195388D20070C39A /* MAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* MAppDelegate.m */; };
 		6003F5A7195388D20070C39A /* MViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* MViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
+		71BEBCF6D82042026407796D /* libPods-MSWebApp_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3817B05FC47EB9280FA2FC90 /* libPods-MSWebApp_Example.a */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		FC23C5351D802659005AA23F /* folder_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC23C5341D802659005AA23F /* folder_blue@2x.png */; };
 		FC23C53A1D8027D1005AA23F /* css@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC23C5361D8027D1005AA23F /* css@2x.png */; };
@@ -33,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		0E69F8BEE97DA0BB77D5771F /* Pods-MSWebApp_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSWebApp_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MSWebApp_Example/Pods-MSWebApp_Example.release.xcconfig"; sourceTree = "<group>"; };
+		3817B05FC47EB9280FA2FC90 /* libPods-MSWebApp_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MSWebApp_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4016119B6EECD51B3AF09B76 /* Pods-MSWebApp_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSWebApp_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSWebApp_Tests/Pods-MSWebApp_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4FB3AD11916E112636694C51 /* Pods-MSWebApp_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSWebApp_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MSWebApp_Tests/Pods-MSWebApp_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		551D2742109DB501FF457EEA /* Pods-MSWebApp_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSWebApp_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSWebApp_Example/Pods-MSWebApp_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		737BEE1ED9F9269F6531571A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8812EC7219AEE2B7BB9ED004 /* MSWebApp.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MSWebApp.podspec; path = ../MSWebApp.podspec; sourceTree = "<group>"; };
-		ABB6F2C37B104E0ECA2CA88A /* Pods_MSWebApp_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSWebApp_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFBCECE0EC0E940EB7D1F3B7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F88F161675728B5BF9128DAC /* libPods-MSWebApp_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MSWebApp_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC23C5341D802659005AA23F /* folder_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "folder_blue@2x.png"; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				45D11844D8A76B88FA2E8AC7 /* Pods_MSWebApp_Example.framework in Frameworks */,
+				71BEBCF6D82042026407796D /* libPods-MSWebApp_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +125,7 @@
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
 				F88F161675728B5BF9128DAC /* libPods-MSWebApp_Tests.a */,
-				ABB6F2C37B104E0ECA2CA88A /* Pods_MSWebApp_Example.framework */,
+				3817B05FC47EB9280FA2FC90 /* libPods-MSWebApp_Example.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
