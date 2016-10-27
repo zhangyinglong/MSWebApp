@@ -23,7 +23,7 @@ Functions And features:
 ## How to use
 
 ```ruby
-pod "MSWebApp", "~> 1.0.1"
+pod "MSWebApp", "~> 1.1"
 
 #import <MSWebApp/MSWebApp.h>
 ```
@@ -46,42 +46,42 @@ Demo response for `[MSWebApp webApp].fullURL`, `MSWebApp Framework` use POST met
 app =     {
 module =         (
 {
-mid = LeafModules;
-packageurl = "http://um.devdylan.cn/LeafModules.zip";
-urls =                 {
-"classPayment.tpl" = "classPayment.html";
-"detail.tpl" = "detail/detail.html";
-"enter.tpl" = "index.html";
-};
-version = ib42;
-sync = "n",
-initdown = "y",
-files: {
-"/js/mui.js": "http://um.devdylan.cn/LeafModules/js/mui.js"
-}
+  mid = LeafModules;
+  packageurl = "http://um.devdylan.cn/LeafModules.zip";
+  urls =                 {
+    "classPayment.tpl" = "classPayment.html";
+    "detail.tpl" = "detail/detail.html";
+    "enter.tpl" = "index.html";
+  };
+  version = ib42;
+  sync = "n",
+  initdown = "y",
+  files: {
+    "/js/mui.js": "http://um.devdylan.cn/LeafModules/js/mui.js"
+  }
 },
 {
-mid = bootstrap;
-packageurl = "http://um.devdylan.cn/bootstrap.zip";
-urls =                 {
-};
-version = ib43;
-sync = "n",
-initdown = "y",
-files: {
-"/js/mui.js": "http://um.devdylan.cn/LeafModules/js/mui.js"
-}
+  mid = bootstrap;
+  packageurl = "http://um.devdylan.cn/bootstrap.zip";
+  urls =                 {
+  };
+  version = ib43;
+  sync = "n",
+  initdown = "y",
+  files: {
+    "/js/mui.js": "http://um.devdylan.cn/LeafModules/js/mui.js"
+  }
 },
 {
-mid = vueModule;
-packageurl = "http://um.devdylan.cn/vueModule.zip";
-urls =                 {
-"enter.tpl" = "index.html";
-};
-version = "3.4.6";
-sync = "y",
-"initdown" = "n",
-files: {}
+  mid = vueModule;
+  packageurl = "http://um.devdylan.cn/vueModule.zip";
+  urls =                 {
+    "enter.tpl" = "index.html";
+  };
+  version = "3.4.6";
+  sync = "y",
+  "initdown" = "n",
+  files: {}
 }
 );
 version = "3.3.4";
