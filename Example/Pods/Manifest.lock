@@ -17,9 +17,9 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - LKDBHelper (2.3.4):
+  - LKDBHelper (2.4):
     - FMDB
-  - MSWebApp (1.0.2):
+  - MSWebApp (1.0.8):
     - AFNetworking
     - LKDBHelper
     - WebViewJavascriptBridge
@@ -37,11 +37,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  LKDBHelper: 21fed3d2a010ea6f97996490abd717d379f9c772
-  MSWebApp: 0ba465af30c5f1b91e3b7e140dbdda027afce494
+  LKDBHelper: 1162892ca4ffc28029070d6f40f57b333133f1c4
+  MSWebApp: a2cff49f7482b1da4746fb30b70d8dce39fbb065
   WebViewJavascriptBridge: a4d502315f1b8d9a51cd6a9174147ed567ec3bc5
   WPZipArchive: 3a31c553e4c0d6225ae6661b20d189366d19c79f
 
-PODFILE CHECKSUM: b5c191b702263bcddaeeaba4909cccb4ab6a5334
+PODFILE CHECKSUM: c716c246e0ad3cd6a9795faee898d823c830e511
 
-COCOAPODS: 1.1.0.rc.1
+COCOAPODS: 1.1.1
